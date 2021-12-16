@@ -20,6 +20,7 @@ export const App = () => {
   }
 
   console.log(getToken())
+  console.log('here')
 
   return (
     <div className="App">
