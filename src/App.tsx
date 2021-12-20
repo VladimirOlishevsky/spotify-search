@@ -1,30 +1,48 @@
 import './App.css';
 import { SearchBar } from './components';
+import {
+  appSelector,
+  decrement,
+  increment,
+  useAppDispatch,
+  useAppSelector
+} from './redux';
 
 export const App = () => {
 
-  const getToken = async () => {
+  const dispatch = useAppDispatch();
+  const { value } = useAppSelector(appSelector);
+  console.log('value', value)
 
-    const result = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa('515ff8815b3a47b3b2133151fe0caa5c' + ':' + '1a4a8bbec52c4c9c90e75f733034705c')
-      },
-      body: 'grant_type=client_credentials'
-    });
+  // const getToken = async () => {
 
-    const data = await result.json();
-    console.log('1111', data)
-    return data.access_token;
-  }
+  //   const result = await fetch('https://accounts.spotify.com/api/token', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Authorization': 'Basic ' + btoa('515ff8815b3a47b3b2133151fe0caa5c' + ':' + '1a4a8bbec52c4c9c90e75f733034705c')
+  //     },
+  //     body: 'grant_type=client_credentials'
+  //   });
 
-  console.log(getToken())
+  //   const data = await result.json();
+  //   console.log('1111', data)
+  //   return data.access_token;
+  // }
+
+  // console.log(getToken())
 
   return (
     <div className="App">
       <header className="App-header">
         <SearchBar />
+        <button onClick={() => dispatch(increment())}>
+          +
+        </button>
+        {value}
+        <button onClick={() => dispatch(decrement())}>
+          -
+        </button>
       </header>
     </div>
   );
