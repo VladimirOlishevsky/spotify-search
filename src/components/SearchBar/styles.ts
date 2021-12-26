@@ -2,13 +2,6 @@
 import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
-  root: {
-    // background: '#2f2f2f',
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // minHeight: '100vh'
-  },
   form: {
     position: 'relative',
     width: '30rem',
