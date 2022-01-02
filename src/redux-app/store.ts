@@ -2,13 +2,19 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'; 
 import appReducer from './app';
 import authReducer, { authApi } from './auth';
+import { artistsApi, atristsReducer } from './artists'
 
+
+console.log('111', atristsReducer);
+console.log('artistsApi.reducer', artistsApi.reducer);
 
 export const store = configureStore({
     reducer: {
         app: appReducer,
         auth: authReducer,
+        artists: atristsReducer,
         [authApi.reducerPath]: authApi.reducer,
+        [artistsApi.reducerPath]: artistsApi.reducer,
     }
 })
 
