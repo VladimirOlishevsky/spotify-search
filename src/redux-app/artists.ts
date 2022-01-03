@@ -39,7 +39,7 @@ export const artistsSlice = createSlice({
     initialState,
     reducers: {
         getArtists(state, action: PayloadAction<IArtistsApi>) {
-            console.log('action1111', action)
+            console.log('111111', action)
             state.artists = action.payload.artists.items;
         },
     },

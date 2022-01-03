@@ -2,6 +2,11 @@
 import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8
+  },
   form: {
     position: 'relative',
     width: '30rem',
@@ -26,6 +31,9 @@ export const getStyles = makeStyles({
       transitionProperty: 'width, border-radius',
       zIndex: 1,
       position: 'relative',
+      '&::-webkit-search-cancel-button:hover': {
+        cursor: 'pointer'
+      }
     },
     '&:not(:placeholder-shown)': {
       borderRadius: '.7rem 0 0 .7rem',
