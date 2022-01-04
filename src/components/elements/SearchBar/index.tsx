@@ -17,9 +17,10 @@ export const SearchBar = () => {
     const [searchState, setSearchState] = useState('');
     const intermediateValue = useDebounce(searchState, 500);
     const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: authToken, value: intermediateValue })
+    
 
     useEffect(() => {
-        if (intermediateValue) {
+        if (data) {
             dispatch(getArtists(data));
         }
     }, [data, dispatch])

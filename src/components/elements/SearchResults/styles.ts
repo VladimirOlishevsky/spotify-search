@@ -16,9 +16,16 @@ export const getStyles = makeStyles({
         alignItems: 'flex-start',
     },
     searchItems: {
-      '&:hover': {
-          cursor: 'pointer'
-      }
+        background: 'none',
+        color: 'inherit',
+        border: 'none',
+        padding: 0,
+        font: 'inherit',
+        cursor: 'pointer',
+        outline: 'inherit',
+        '&:hover': {
+            cursor: 'pointer'
+        }
     }
 })
 

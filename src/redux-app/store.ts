@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'; 
 import appReducer from './app';
 import authReducer, { authApi } from './auth';
-import { artistsApi, atristsReducer } from './artists'
+import { artistsApi, atristsReducer, apiPartnerSpotify } from './artists'
 
 
 export const store = configureStore({
@@ -12,6 +12,7 @@ export const store = configureStore({
         artists: atristsReducer,
         [authApi.reducerPath]: authApi.reducer,
         [artistsApi.reducerPath]: artistsApi.reducer,
+        [apiPartnerSpotify.reducerPath]: apiPartnerSpotify.reducer
     }
 })
 
