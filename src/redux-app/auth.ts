@@ -45,7 +45,6 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         updateAccessToken(state, action: PayloadAction<string>) {
-            console.log('action', action)
             state.authToken = action.payload;
         },
     },
