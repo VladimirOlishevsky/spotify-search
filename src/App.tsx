@@ -1,9 +1,12 @@
+import { SongCard } from 'components';
 import { Search, Artist } from 'components/blocks';
-import './App.css';
+import { getStyles } from 'styles';
+
 
 export const App = () => {
+  const classes = getStyles();
   return (
-    <div className="App">
+    <div className={classes.root}>
       <Search />
       <Artist />
     </div>

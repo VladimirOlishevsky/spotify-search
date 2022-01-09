@@ -27,3 +27,34 @@ export interface IArtistsApi {
         items: IArtist[],
     }
 }
+
+export interface ISingleArtistApi {
+    followers: {
+        total: number
+    },
+    id: string,
+    images: {
+        url: string
+    }[],
+    name: string,
+    uri: string,
+}
+
+export interface ITopTracksApi {
+    tracks: {
+        album: {
+            artists: {
+                name: string
+            }[],
+            images: {
+                url: string
+            }[]
+        },
+        external_urls: {
+            spotify: string
+        },
+        name: string,
+        preview_url: string,
+        uri: string,
+    }[]
+}

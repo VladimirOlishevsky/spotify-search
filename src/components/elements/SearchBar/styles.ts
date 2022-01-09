@@ -9,7 +9,8 @@ export const getStyles = makeStyles({
   },
   form: {
     position: 'relative',
-    width: '30rem',
+    maxWidth: 500,
+    width: '100%',
     background: '#57bd84',
     borderRadius: '.7rem',
   },

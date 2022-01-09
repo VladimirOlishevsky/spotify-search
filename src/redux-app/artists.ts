@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IArtist, IArtistsApi, RootType } from ".";
+import { IArtist, IArtistsApi, ISingleArtistApi, ITopTracksApi, RootType } from ".";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -32,7 +32,7 @@ export const artistsApi = createApi({
                 });
             },
         }),
-        getSingleArtist: builder.query<any, { token: string, artistId: string }>({
+        getSingleArtist: builder.query<ISingleArtistApi, { token: string, artistId: string }>({
             query: (args) => {
                 const { token, artistId } = args;
                 return ({
@@ -58,7 +58,7 @@ export const artistsApi = createApi({
                 });
             },
         }),
-        getArtistTopTracks: builder.query<any, { token: string, artistId: string }>({
+        getArtistTopTracks: builder.query<ITopTracksApi, { token: string, artistId: string }>({
             query: (args) => {
                 const { token, artistId } = args;
                 return ({
