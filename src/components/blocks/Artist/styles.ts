@@ -2,15 +2,21 @@
 import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
-    root: {
-        backgroundColor: '#282c34',
-        minHeight: '100vh',
+    wrapper: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        paddingTop: 100,
-        fontSize: 'calc(10px + 2vmin)',
-        color: 'white',
+        maxWidth: 1200,
+        width: '100%'
+    },
+    info: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 16
+    },
+    img: {
+        width: '100%',
+        maxWidth: 300,
+        height: 'auto'
     }
 })
 

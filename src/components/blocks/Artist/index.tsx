@@ -23,6 +23,9 @@ export const Artist = () => {
 
     console.log('topTrackstopTracks', topTracks?.tracks.slice(0, 5))
 
+    const avatar = artist?.images[0].url
+    const adaptTracks = topTracks?.tracks.slice(0, 5)
+
     // const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
 
     // const { data } = accessTokenQueryResult;
@@ -34,31 +37,36 @@ export const Artist = () => {
     // }, [dispatch, accessToken]);
 
     return (
-        <div>
-            <div>Followers {artist?.followers.total}</div>
-            <img style={{
-                width: '100%',
-                maxWidth: 300,
-                height: 'auto'
-            }}
-                src={artist?.images[0].url}
-                alt="artist-img" />
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div>
-                    Popular tracks
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div className={classes.wrapper}>
+                <div className={classes.info}>
+                    <span>
+                        Followers {artist?.followers.total}
+                    </span>
+                    <img
+                        className={classes.img}
+                        src={avatar}
+                        alt="artist-img" />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {topTracks?.tracks.map(el =>
-                        <SongCard
-                            img={el.album.images[0].url}
-                            songName={el.name}
-                            songArtist={el.album.artists.map(el => el.name)}
-                            urlToSpotify={el.external_urls.spotify}
-                        />
-                    )}
+
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    <div>
+                        Popular tracks
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                        {adaptTracks?.map(el =>
+                            <SongCard
+                                img={el.album.images[0].url}
+                                songName={el.name}
+                                songArtist={el.album.artists.map(el => el.name)}
+                                urlToSpotify={el.external_urls.spotify}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
+
         </div>
 
     );
