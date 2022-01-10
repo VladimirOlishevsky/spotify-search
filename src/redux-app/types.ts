@@ -58,3 +58,15 @@ export interface ITopTracksApi {
         uri: string,
     }[]
 }
+
+export interface ITopAlbumsApi {
+    items: {
+        images: {
+            url: string,
+        }[],
+        name: string,
+        release_date: string,
+        type: string,
+        uri: string,
+    }[]
+}

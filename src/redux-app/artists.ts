@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IArtist, IArtistsApi, ISingleArtistApi, ITopTracksApi, RootType } from ".";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ITopAlbumsApi } from "./types";
 
 const initialState = {
     artists: [] as IArtist[],
@@ -45,7 +46,7 @@ export const artistsApi = createApi({
                 });
             },
         }),
-        getArtistAlbums: builder.query<any, { token: string, artistId: string }>({
+        getArtistAlbums: builder.query<ITopAlbumsApi, { token: string, artistId: string }>({
             query: (args) => {
                 const { token, artistId } = args;
                 return ({

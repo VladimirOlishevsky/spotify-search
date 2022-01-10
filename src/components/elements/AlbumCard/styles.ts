@@ -3,17 +3,24 @@ import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
     root: {
+        width: 160,
+        height: 230,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
         borderRadius: 8,
         opacity: 1,
         boxShadow: '-6px -6px 10px rgba(0, 0, 0, 0.2),6px 6px 10px rgba(0, 0, 0, 0.2)',
-        padding: 30
+        padding: 16,
+        gap: 24,
+        color: 'inherit',
+        textDecoration: 'none'
     },
     info: {
+        width: '100%',
         display: 'flex',
-        gap: 32,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
     },
     description: {
         display: 'flex',
@@ -29,9 +36,8 @@ export const getStyles = makeStyles({
         fontSize: 14
     },
     img: {
-        width: '100%',
-        maxWidth: 100,
-        height: 'auto'
+        width: 150,
+        height: 150,
     },
     button: {
         alignItems: 'center',
@@ -75,3 +81,52 @@ export const getStyles = makeStyles({
         }
       }
 })
+
+// <!-- HTML !-->
+// <button class="button-5" role="button">Button 5</button>
+
+// /* CSS */
+// .button-5 {
+//   align-items: center;
+//   background-clip: padding-box;
+//   background-color: #fa6400;
+//   border: 1px solid transparent;
+//   border-radius: .25rem;
+//   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+//   box-sizing: border-box;
+//   color: #fff;
+//   cursor: pointer;
+//   display: inline-flex;
+//   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+//   font-size: 16px;
+//   font-weight: 600;
+//   justify-content: center;
+//   line-height: 1.25;
+//   margin: 0;
+//   min-height: 3rem;
+//   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+//   position: relative;
+//   text-decoration: none;
+//   transition: all 250ms;
+//   user-select: none;
+//   -webkit-user-select: none;
+//   touch-action: manipulation;
+//   vertical-align: baseline;
+//   width: auto;
+// }
+
+// .button-5:hover,
+// .button-5:focus {
+//   background-color: #fb8332;
+//   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+// }
+
+// .button-5:hover {
+//   transform: translateY(-1px);
+// }
+
+// .button-5:active {
+//   background-color: #c85000;
+//   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+//   transform: translateY(0);
+// }
