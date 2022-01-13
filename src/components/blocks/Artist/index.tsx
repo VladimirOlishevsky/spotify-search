@@ -1,6 +1,5 @@
-import { SongCard } from 'components';
-import { AlbumCard } from 'components/elements/AlbumCard';
 import { artistsApi, artistsSelector, useAppDispatch, useAppSelector, authSelector } from 'redux-app';
+import { RelatedArtists } from './RelatedArtists';
 import { getStyles } from './styles';
 import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
@@ -34,7 +33,7 @@ export const Artist = () => {
     // }, [dispatch, accessToken]);
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className={classes.root}>
             <div className={classes.wrapper}>
                 <div className={classes.info}>
                     <span>
@@ -47,6 +46,7 @@ export const Artist = () => {
                 </div>
                 <TopSongs />
                 <TopAlbums />
+                <RelatedArtists />
             </div>
         </div>
 

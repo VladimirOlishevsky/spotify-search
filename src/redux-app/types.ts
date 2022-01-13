@@ -70,3 +70,14 @@ export interface ITopAlbumsApi {
         uri: string,
     }[]
 }
+
+export interface IRelatedArtistsApi {
+    artists: {
+        href: string
+        id: string
+        images: {
+            url: string,
+        }[],
+        name: string
+    }[]
+}

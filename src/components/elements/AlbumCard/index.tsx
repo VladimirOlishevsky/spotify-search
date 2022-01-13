@@ -24,7 +24,7 @@ export const AlbumCard = ({
                 src={img}
                 alt="song-img" />
             <div className={classes.info}>
-                <Typography>{albumName}</Typography>
+                <Typography className={classes.albumName}>{albumName}</Typography>
                 <Typography>{`${date} • album`}</Typography>
             </div>
         </a>

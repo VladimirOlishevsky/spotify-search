@@ -14,7 +14,6 @@ export const SearchResults = ({
     const dispatch = useAppDispatch();
 
     const { artists } = useAppSelector(artistsSelector);
-    console.log('artists', artists)
 
     return (
         <div className={classes.root}>

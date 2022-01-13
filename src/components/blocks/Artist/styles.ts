@@ -2,6 +2,11 @@
 import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
+    root: {
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center'
+    },
     wrapper: {
         display: 'flex',
         flexDirection: 'column',

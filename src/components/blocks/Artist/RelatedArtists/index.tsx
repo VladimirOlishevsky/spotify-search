@@ -3,20 +3,21 @@ import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux
 import { getStyles } from './styles';
 
 
-export const TopAlbums = () => {
+export const RelatedArtists = () => {
     const classes = getStyles();
     const { currentArtistId } = useAppSelector(artistsSelector);
     const { authToken } = useAppSelector(authSelector);
 
-    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: authToken, artistId: currentArtistId })
-    const adaptAlbums = album?.items.filter(el => el.type === 'album').slice(0, 5)
+    const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ token: authToken, artistId: currentArtistId })
+    const adaptRelatedArtists = relatedArtists?.artists.slice(0, 5);
+    console.log('relatedArtists', adaptRelatedArtists)
 
     return (
         <div className={classes.root}>
             <div>
-                Popular albums
+               Related Artists
             </div>
-            <div className={classes.albumsWrapper}>
+            {/* <div className={classes.albumsWrapper}>
                 {adaptAlbums?.map(el =>
                     <AlbumCard
                         img={el.images[0].url}
@@ -25,7 +26,7 @@ export const TopAlbums = () => {
                         urlToSpotify={el.uri}
                     />
                 )}
-            </div>
+            </div> */}
         </div>
     );
 }
