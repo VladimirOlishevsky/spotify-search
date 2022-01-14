@@ -11,9 +11,6 @@ export const SearchBar = () => {
 
     const dispatch = useAppDispatch();
     const { authToken } = useAppSelector(authSelector);
-    // const { artists } = useAppSelector(artistsSelector);
-
-
     const [searchState, setSearchState] = useState('');
     const intermediateValue = useDebounce(searchState, 500);
     const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: authToken, value: intermediateValue })

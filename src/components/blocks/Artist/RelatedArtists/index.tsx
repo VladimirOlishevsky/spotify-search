@@ -1,4 +1,3 @@
-import { AlbumCard } from 'components/elements/AlbumCard';
 import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
 import { getStyles } from './styles';
 
