@@ -1,4 +1,3 @@
-import { SongCard } from 'components';
 import { Search, Artist } from 'components/blocks';
 import { getStyles } from 'styles';
 

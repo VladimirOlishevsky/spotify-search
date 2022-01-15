@@ -19,7 +19,7 @@ export const AlbumCard = ({
     const date = dayjs(albumDate).year();
     
     return (
-        <a target="_blank" className={classes.root} href={urlToSpotify}>
+        <a target="_blank" rel="noreferrer" className={classes.root} href={urlToSpotify}>
             <img className={classes.img}
                 src={img}
                 alt="song-img" />

@@ -1,5 +1,7 @@
 import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
 import { getStyles } from './styles';
+import { RelatedArtistCard } from 'components';
+import noImage from 'assets/no_image.jpg';
 
 
 export const RelatedArtists = () => {
@@ -9,23 +11,24 @@ export const RelatedArtists = () => {
 
     const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ token: authToken, artistId: currentArtistId })
     const adaptRelatedArtists = relatedArtists?.artists.slice(0, 5);
-    console.log('relatedArtists', adaptRelatedArtists)
+
+    if (!relatedArtists?.artists.length) return null
 
     return (
         <div className={classes.root}>
             <div>
-               Related Artists
+                Related Artists
             </div>
-            {/* <div className={classes.albumsWrapper}>
-                {adaptAlbums?.map(el =>
-                    <AlbumCard
-                        img={el.images[0].url}
-                        albumName={el.name}
-                        albumDate={el.release_date}
-                        urlToSpotify={el.uri}
+            <div className={classes.relatedArtists}>
+                {adaptRelatedArtists?.map(el =>
+                    <RelatedArtistCard
+                        key={el.name}
+                        img={el.images[0]?.url || noImage}
+                        name={el.name}
+                        url={el.href}
                     />
                 )}
-            </div> */}
+            </div>
         </div>
     );
 }
