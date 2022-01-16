@@ -27,7 +27,7 @@ export const SongCard = ({
                         {songName}
                     </Typography>
                     <div className={classes.author}>
-                        {songArtist.map(el => <Typography>{el}</Typography>)}
+                        {songArtist.map(el => <Typography key={el}>{el}</Typography>)}
                     </div>
                 </div>
             </div>

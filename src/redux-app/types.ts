@@ -71,6 +71,10 @@ export interface ITopAlbumsApi {
     }[]
 }
 
+
+export type TopAlbumsItems = ITopAlbumsApi['items']
+export type TopAlbumsValue = TopAlbumsItems[number]
+
 export interface IRelatedArtistsApi {
     artists: {
         href: string

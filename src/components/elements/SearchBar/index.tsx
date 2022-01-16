@@ -16,6 +16,7 @@ export const SearchBar = () => {
     const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: authToken, value: intermediateValue })
     
 
+    console.log('searchState', searchState)
     useEffect(() => {
         if (data) {
             dispatch(getArtists(data));
@@ -28,6 +29,7 @@ export const SearchBar = () => {
                 <label className={classes.label} htmlFor="search">Search for stuff</label>
                 <input
                     onChange={(e) => setSearchState(e.currentTarget.value)}
+                    value={searchState}
                     className={classes.input}
                     id="search"
                     type="search"
@@ -35,7 +37,7 @@ export const SearchBar = () => {
                     autoComplete="off" />
                 <button className={classes.button} type="submit">Go</button>
             </form>
-            {searchState && <SearchResults isFetching={isFetching} />}
+            {searchState && <SearchResults setSearchState={setSearchState} isFetching={isFetching} />}
         </div>
     );
 }

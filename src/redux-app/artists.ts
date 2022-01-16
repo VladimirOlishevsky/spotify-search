@@ -101,9 +101,12 @@ export const artistsSlice = createSlice({
             console.log(' action.payload',  action.payload)
             state.currentArtistId = action.payload;
         },
+        clearArtistsList(state) {
+            state.artists = []
+        }
     },
 });
 
-export const { getArtists, getSingleArtist } = artistsSlice.actions;
+export const { getArtists, getSingleArtist, clearArtistsList } = artistsSlice.actions;
 export const artistsSelector = (state: RootType) => state.artists;
 export const atristsReducer = artistsSlice.reducer;
