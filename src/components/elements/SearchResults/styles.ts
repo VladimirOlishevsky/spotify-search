@@ -8,7 +8,11 @@ export const getStyles = makeStyles({
         alignItems: 'flex-start',
         padding: 16,
         borderRadius: 8,
-        backgroundColor: '#6667ABB3',
+        backgroundColor: '#6667AB',
+        position: 'absolute',
+        top: 100,
+        width: '100%',
+        boxSizing: 'border-box'
     },
     searchResults: {
         display: 'flex',

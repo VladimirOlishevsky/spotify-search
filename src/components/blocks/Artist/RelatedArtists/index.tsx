@@ -23,9 +23,9 @@ export const RelatedArtists = () => {
                 {adaptRelatedArtists?.map(el =>
                     <RelatedArtistCard
                         key={el.name}
+                        id={el.id}
                         img={el.images[0]?.url || noImage}
                         name={el.name}
-                        url={el.href}
                     />
                 )}
             </div>

@@ -14,7 +14,10 @@ export const getStyles = makeStyles({
         fontSize: 20,
         gap: 16,
         color: 'inherit',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        '&:hover': {
+            cursor: 'pointer'
+        }
     },
     img: {
         width: 50,

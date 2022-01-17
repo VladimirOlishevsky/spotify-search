@@ -12,7 +12,6 @@ export const store = configureStore({
         artists: atristsReducer,
         [authApi.reducerPath]: authApi.reducer,
         [artistsApi.reducerPath]: artistsApi.reducer,
-        // [apiPartnerSpotify.reducerPath]: apiPartnerSpotify.reducer
     }
 })
 

@@ -5,7 +5,8 @@ export const getStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 8
+    gap: 8,
+    position: 'relative'
   },
   form: {
     position: 'relative',

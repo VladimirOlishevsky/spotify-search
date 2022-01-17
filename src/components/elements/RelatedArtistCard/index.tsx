@@ -1,20 +1,31 @@
 import { getStyles } from './styles';
+import { useAppDispatch, getSingleArtist, clearArtistsList } from 'redux-app';
+
 
 interface IRelatedArtistCard {
     img: string,
     name: string,
-    url: string
+    id: string
 }
 
 export const RelatedArtistCard = ({
     img,
     name,
-    url
+    id
 }: IRelatedArtistCard) => {
     const classes = getStyles();
 
+    const dispatch = useAppDispatch();
+    const click = (value: string) => {
+        dispatch(getSingleArtist(value));
+        dispatch(clearArtistsList())
+    }
+
     return (
-        <a target='_blank' rel='noreferrer' href={url} className={classes.root}>
+        <a
+            rel='noreferrer'
+            className={classes.root}
+            onClick={() => click(id)}>
             <img className={classes.img}
                 src={img}
                 alt="song-img" />
