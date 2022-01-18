@@ -1,5 +1,5 @@
 import { AlbumCard } from 'components/elements/AlbumCard';
-import { artistsApi, artistsSelector, useAppSelector, authSelector, TopAlbumsItems, TopAlbumsValue } from 'redux-app';
+import { artistsApi, artistsSelector, useAppSelector, authSelector, TopAlbumsItems } from 'redux-app';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
 

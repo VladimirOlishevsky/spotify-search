@@ -3,6 +3,11 @@ import { makeStyles } from '@mui/styles';
 
 export const getStyles = makeStyles({
     root: {
+        background: 'none',
+        border: 'none',
+        font: 'inherit',
+        cursor: 'pointer',
+        outline: 'inherit',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

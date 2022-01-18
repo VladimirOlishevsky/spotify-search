@@ -22,14 +22,13 @@ export const RelatedArtistCard = ({
     }
 
     return (
-        <a
-            rel='noreferrer'
+        <button
             className={classes.root}
             onClick={() => click(id)}>
             <img className={classes.img}
                 src={img}
                 alt="song-img" />
             <span>{name}</span>
-        </a>
+        </button>
     );
 }
