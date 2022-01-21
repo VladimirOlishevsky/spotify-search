@@ -15,8 +15,6 @@ export const SearchBar = () => {
     const intermediateValue = useDebounce(searchState, 500);
     const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: authToken, value: intermediateValue })
     
-
-    console.log('searchState', searchState)
     useEffect(() => {
         if (data) {
             dispatch(getArtists(data));
@@ -26,7 +24,6 @@ export const SearchBar = () => {
     return (
         <div className={classes.root}>
             <form className={classes.form} role="search">
-                <label className={classes.label} htmlFor="search">Search for stuff</label>
                 <input
                     onChange={(e) => setSearchState(e.currentTarget.value)}
                     value={searchState}
