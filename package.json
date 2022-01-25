@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@mui/material": "^5.2.3",
-    "@mui/styles": "^5.2.3"
+    "@mui/styles": "^5.2.3",
+    "chart.js": "^3.7.0"
   }
 }
