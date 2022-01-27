@@ -2,14 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IArtist, IArtistsApi, ISingleArtistApi, ITopTracksApi, RootType } from ".";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IRelatedArtistsApi, ITopAlbumsApi } from "./types";
+import { IArtistFeaturesApi, IRelatedArtistsApi, ITopAlbumsApi } from "./types";
 
 const initialState = {
     artists: [] as IArtist[],
-    currentArtistId: ''
+    currentArtistId: '',
+    topTrackIds: [] as string[]
 }
 
 export const ARTISTS_API_REDUCER_KEY = 'artistsApi';
+export const ARTISTS_REATURES_API_REDUCER_KEY = 'artistsFeaturesApi';
 export const SINGLE_API_REDUCER_KEY = 'singleArtistsApi';
 export const API_PARTNER_SPOTIFY_REDUCER_KEY = 'apiPartnerSpotify';
 
@@ -88,6 +90,34 @@ export const artistsApi = createApi({
     }),
 });
 
+// export const artistsFeaturesApi = createApi({
+//     reducerPath: ARTISTS_REATURES_API_REDUCER_KEY,
+//     baseQuery: fetchBaseQuery({
+//         baseUrl: `https://api.spotify.com/v1/artist-data`,
+//     }),
+//     endpoints: (builder) => ({
+//         getArtistFeatures: builder.query<IArtistFeaturesApi, { token: string, artistId: string }>({
+//             query: (args) => {
+//                 const { token, artistId } = args;
+//                 return ({
+//                     url: `?id=${artistId}`,
+//                     method: 'GET',
+//                     headers: {
+//                         'Content-Type': 'application/x-www-form-urlencoded',
+//                         'Authorization': `Bearer ${token}`
+//                     },
+//                     // params: {
+//                     //     ids: artistId
+//                     // }
+//                     // body: {
+//                     //     id: artistId
+//                     // }
+//                 });
+//             },
+//         }),
+//     }),
+// });
+
 
 
 export const artistsSlice = createSlice({
@@ -98,8 +128,10 @@ export const artistsSlice = createSlice({
             state.artists = action.payload.artists.items;
         },
         getSingleArtist(state, action: PayloadAction<string>) {
-            console.log(' action.payload',  action.payload)
             state.currentArtistId = action.payload;
+        },
+        setTrackIds(state, action: PayloadAction<string[]>) {
+            state.topTrackIds = action.payload
         },
         clearArtistsList(state) {
             state.artists = []
@@ -107,6 +139,6 @@ export const artistsSlice = createSlice({
     },
 });
 
-export const { getArtists, getSingleArtist, clearArtistsList } = artistsSlice.actions;
+export const { getArtists, getSingleArtist, clearArtistsList, setTrackIds } = artistsSlice.actions;
 export const artistsSelector = (state: RootType) => state.artists;
 export const atristsReducer = artistsSlice.reducer;

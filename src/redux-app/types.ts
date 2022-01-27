@@ -51,8 +51,9 @@ export interface ITopTracksApi {
             }[]
         },
         external_urls: {
-            spotify: string
+            spotify: string,
         },
+        id: string,
         name: string,
         preview_url: string,
         uri: string,
@@ -84,4 +85,23 @@ export interface IRelatedArtistsApi {
         }[],
         name: string
     }[]
+}
+
+export interface IArtistFeaturesApi {
+    artistData: {
+        audioFeatures: {
+            acousticness: number
+            danceability: number
+            energy: number
+            instrumentalness: number
+            key: number
+            liveness: number
+            loudness: number
+            speechiness: number
+            tempo: number
+            valence: number
+        }
+        id: string
+        name: string
+    }
 }
