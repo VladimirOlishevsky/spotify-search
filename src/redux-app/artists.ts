@@ -7,7 +7,7 @@ import { IArtistFeaturesApi, IRelatedArtistsApi, ITopAlbumsApi } from "./types";
 const initialState = {
     artists: [] as IArtist[],
     currentArtistId: '',
-    topTrackIds: [] as string[]
+    topTrackIds: ''
 }
 
 export const ARTISTS_API_REDUCER_KEY = 'artistsApi';
@@ -87,37 +87,32 @@ export const artistsApi = createApi({
                 });
             },
         }),
+        getAudioFeatures: builder.query<IArtistFeaturesApi, { token: string, artistIds: string }>({
+            query: (args) => {
+                const { token, artistIds } = args;
+                return ({
+                    url: `audio-features`,
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    params: {
+                        ids: artistIds
+                    },
+                    transformResponse: (returnValue: IArtistFeaturesApi) => {
+                        // `meta` here contains our added `requestId` & `timestamp`, as well as
+                        // `request` & `response` from fetchBaseQuery's meta object.
+                        // These properties can be used to transform the response as desired.
+
+                        // return returnValue.audioFeatures.reduce((acc, el) => {
+                        // }, {} as IArtistFeaturesApi['audioFeatures'][number])
+                      },
+                });
+            },
+        }),
     }),
 });
-
-// export const artistsFeaturesApi = createApi({
-//     reducerPath: ARTISTS_REATURES_API_REDUCER_KEY,
-//     baseQuery: fetchBaseQuery({
-//         baseUrl: `https://api.spotify.com/v1/artist-data`,
-//     }),
-//     endpoints: (builder) => ({
-//         getArtistFeatures: builder.query<IArtistFeaturesApi, { token: string, artistId: string }>({
-//             query: (args) => {
-//                 const { token, artistId } = args;
-//                 return ({
-//                     url: `?id=${artistId}`,
-//                     method: 'GET',
-//                     headers: {
-//                         'Content-Type': 'application/x-www-form-urlencoded',
-//                         'Authorization': `Bearer ${token}`
-//                     },
-//                     // params: {
-//                     //     ids: artistId
-//                     // }
-//                     // body: {
-//                     //     id: artistId
-//                     // }
-//                 });
-//             },
-//         }),
-//     }),
-// });
-
 
 
 export const artistsSlice = createSlice({
@@ -130,7 +125,7 @@ export const artistsSlice = createSlice({
         getSingleArtist(state, action: PayloadAction<string>) {
             state.currentArtistId = action.payload;
         },
-        setTrackIds(state, action: PayloadAction<string[]>) {
+        setTrackIds(state, action: PayloadAction<string>) {
             state.topTrackIds = action.payload
         },
         clearArtistsList(state) {

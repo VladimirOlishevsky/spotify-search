@@ -15,13 +15,17 @@ export const TopSongs = () => {
     const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ token: authToken, artistId: currentArtistId })
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 
-    const trackIds = adaptTracks?.map(el => el.id);
+    const trackIds = adaptTracks?.map(el => el.id).join(',');
     console.log(trackIds);
+
+    const { data: aaa } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: trackIds || '' })
+
+    console.log('aaa', aaa);
 
     //7sMBvZCSUl99bJLXZaLa0b,1LPSkqVhWVRUkKE03YUkpB,71l8BEtJPXXlWbV6hhTHWK,7HEWQj82REyDOKMAAlB9pc,21afd9hCjpQ6lE5DPbcPHP
     useEffect(() => {
-        dispatch(setTrackIds(trackIds || []))
-    },[])
+        trackIds && dispatch(setTrackIds(trackIds))
+    },[trackIds])
 
     if(!topTracks?.tracks.length) return null
 

@@ -88,20 +88,16 @@ export interface IRelatedArtistsApi {
 }
 
 export interface IArtistFeaturesApi {
-    artistData: {
-        audioFeatures: {
-            acousticness: number
-            danceability: number
-            energy: number
-            instrumentalness: number
-            key: number
-            liveness: number
-            loudness: number
-            speechiness: number
-            tempo: number
-            valence: number
-        }
-        id: string
-        name: string
-    }
+    audioFeatures: {
+        acousticness: number
+        danceability: number
+        energy: number
+        instrumentalness: number
+        key: number
+        liveness: number
+        loudness: number
+        speechiness: number
+        tempo: number
+        valence: number
+    }[]
 }
