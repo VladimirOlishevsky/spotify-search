@@ -16,13 +16,6 @@ export const TopSongs = () => {
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 
     const trackIds = adaptTracks?.map(el => el.id).join(',');
-    console.log(trackIds);
-
-    const { data: aaa } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: trackIds || '' })
-
-    console.log('aaa', aaa);
-
-    //7sMBvZCSUl99bJLXZaLa0b,1LPSkqVhWVRUkKE03YUkpB,71l8BEtJPXXlWbV6hhTHWK,7HEWQj82REyDOKMAAlB9pc,21afd9hCjpQ6lE5DPbcPHP
     useEffect(() => {
         trackIds && dispatch(setTrackIds(trackIds))
     },[trackIds])

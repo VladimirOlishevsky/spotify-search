@@ -5,6 +5,7 @@ import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
 
 import noImage from 'assets/no_image.jpg';
+import { ChartComponent } from '../Chart';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
@@ -23,6 +24,7 @@ export const Artist = () => {
 
     return (
         <div className={classes.root}>
+            <ChartComponent />
             {artist ?
                 <div className={classes.wrapper}>
                     <div className={classes.info}>
