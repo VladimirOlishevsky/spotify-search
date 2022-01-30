@@ -15,12 +15,10 @@ export const Artist = () => {
     const { currentArtistId } = useAppSelector(artistsSelector);
     const { authToken } = useAppSelector(authSelector);
 
-    const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: authToken, artistId: currentArtistId })
-    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: authToken, artistId: currentArtistId })
-    const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ token: authToken, artistId: currentArtistId })
+    const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: authToken, artistId: currentArtistId });
 
     const avatar = artist?.images[0]?.url;
-    const name = artist?.name
+    const name = artist?.name;
 
     return (
         <div className={classes.root}>

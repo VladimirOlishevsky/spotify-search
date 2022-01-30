@@ -88,7 +88,7 @@ export interface IRelatedArtistsApi {
 }
 
 export interface IArtistFeaturesApi {
-    audioFeatures: {
+    audio_features: {
         acousticness: number
         danceability: number
         energy: number

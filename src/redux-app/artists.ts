@@ -100,14 +100,14 @@ export const artistsApi = createApi({
                     params: {
                         ids: artistIds
                     },
-                    transformResponse: (returnValue: IArtistFeaturesApi) => {
-                        // `meta` here contains our added `requestId` & `timestamp`, as well as
-                        // `request` & `response` from fetchBaseQuery's meta object.
-                        // These properties can be used to transform the response as desired.
+                    // transformResponse: (returnValue: IArtistFeaturesApi) => {
+                    //     // `meta` here contains our added `requestId` & `timestamp`, as well as
+                    //     // `request` & `response` from fetchBaseQuery's meta object.
+                    //     // These properties can be used to transform the response as desired.
 
-                        // return returnValue.audioFeatures.reduce((acc, el) => {
-                        // }, {} as IArtistFeaturesApi['audioFeatures'][number])
-                      },
+                    //     // return returnValue.audioFeatures.reduce((acc, el) => {
+                    //     // }, {} as IArtistFeaturesApi['audioFeatures'][number])
+                    //   },
                 });
             },
         }),

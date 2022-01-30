@@ -18,7 +18,7 @@ export const TopSongs = () => {
     const trackIds = adaptTracks?.map(el => el.id).join(',');
     useEffect(() => {
         trackIds && dispatch(setTrackIds(trackIds))
-    },[trackIds])
+    },[trackIds, dispatch])
 
     if(!topTracks?.tracks.length) return null
 

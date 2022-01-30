@@ -1,13 +1,11 @@
-import { SongCard } from 'components';
-import { artistsApi, artistsSelector, useAppSelector, authSelector, setTrackIds } from 'redux-app';
-import { useAppDispatch } from 'redux-app/store';
+import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
 import { getStyles } from './styles';
-import noImage from 'assets/no_image.jpg';
-import { useEffect } from 'react';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
 Chart.register(ArcElement, Tooltip, Legend);
 //#345469
+
+interface Type extends Record<string, number> { }
 
 export const ChartComponent = () => {
 
@@ -15,12 +13,18 @@ export const ChartComponent = () => {
     const { authToken } = useAppSelector(authSelector);
     const { topTrackIds } = useAppSelector(artistsSelector);
 
+
     const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: topTrackIds })
 
-    const adaptAudioFeatures =  audioFeatures && audioFeatures?.audioFeatures?.reduce((acc, el) => {
-        // acc[el] += el.
-        // Object.keys(el).forEach(val => acc[val]);
-        // console.log(acc);
+    console.log('1111', audioFeatures);
+
+    if (audioFeatures?.audio_features[0] === null) return null
+
+    const adaptAudioFeatures = audioFeatures?.audio_features.reduce((acc: Type, el: Type) => {
+        console.log('222222')
+        Object.keys(acc).forEach((val) => {
+            acc[val] += el[val]
+        })
         return acc
     }, {
         acousticness: 0,
@@ -36,7 +40,7 @@ export const ChartComponent = () => {
     });
 
     console.log('adaptAudioFeatures', adaptAudioFeatures);
-    
+
     const data = {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [
