@@ -16,8 +16,11 @@ export const getStyles = makeStyles({
     },
     info: {
         display: 'flex',
-        flexDirection: 'column',
-        gap: 16
+        gap: 80
+    },
+    artistInfo: {
+        display: 'flex', 
+        flexDirection: 'column'
     },
     name: {
         fontSize: 60,
@@ -27,6 +30,13 @@ export const getStyles = makeStyles({
         width: '100%',
         maxWidth: 300,
         height: 'auto'
+    },
+    pieChartWrapper: {
+        display: 'flex', 
+        width: 300, 
+        alignItems: 'center', 
+        flexDirection: 'column', 
+        justifyContent: 'space-around'
     }
 })
 

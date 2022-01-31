@@ -5,7 +5,7 @@ import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
 
 import noImage from 'assets/no_image.jpg';
-import { ChartComponent } from '../Chart';
+import { PieChart } from '..';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
@@ -22,20 +22,29 @@ export const Artist = () => {
 
     return (
         <div className={classes.root}>
-            <ChartComponent />
+
             {artist ?
                 <div className={classes.wrapper}>
                     <div className={classes.info}>
-                        <span className={classes.name}>
-                            {name}
-                        </span>
-                        <span>
-                            Followers {artist?.followers.total}
-                        </span>
-                        {avatar && <img
-                            className={classes.img}
-                            src={avatar || noImage}
-                            alt="artist-img" />}
+                        <div className={classes.artistInfo}>
+                            <span className={classes.name}>
+                                {name}
+                            </span>
+                            <span>
+                                Followers {artist?.followers.total}
+                            </span>
+                            {avatar && <img
+                                className={classes.img}
+                                src={avatar || noImage}
+                                alt="artist-img" />}
+                        </div>
+                        <div className={classes.pieChartWrapper}>
+                            <span>
+                                Analysis last 5 songs
+                            </span>
+                            <PieChart />
+                        </div>
+
                     </div>
                     <RelatedArtists />
                     <TopSongs />

@@ -7,46 +7,34 @@ Chart.register(ArcElement, Tooltip, Legend);
 
 interface Type extends Record<string, number> { }
 
-export const ChartComponent = () => {
+export const PieChart = () => {
 
     const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
     const { topTrackIds } = useAppSelector(artistsSelector);
-
-
     const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: topTrackIds })
 
-    console.log('1111', audioFeatures);
-
     if (audioFeatures?.audio_features[0] === null) return null
-
     const adaptAudioFeatures = audioFeatures?.audio_features.reduce((acc: Type, el: Type) => {
-        console.log('222222')
         Object.keys(acc).forEach((val) => {
-            acc[val] += el[val]
+            acc[val] += Number(el[val].toFixed(2))
         })
         return acc
     }, {
         acousticness: 0,
         danceability: 0,
         energy: 0,
-        instrumentalness: 0,
-        key: 0,
         liveness: 0,
-        loudness: 0,
         speechiness: 0,
-        tempo: 0,
-        valence: 0,
     });
 
-    console.log('adaptAudioFeatures', adaptAudioFeatures);
 
     const data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: Object.keys(adaptAudioFeatures || []),
         datasets: [
             {
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: Object.values(adaptAudioFeatures || []),
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -69,8 +57,6 @@ export const ChartComponent = () => {
     };
 
     return (
-        <div>
-            <Pie data={data} />
-        </div>
+        <Pie data={data} />
     );
 }
