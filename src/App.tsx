@@ -1,3 +1,4 @@
+import { Tabs } from 'components';
 import { Search, Artist } from 'components/blocks';
 import {
   BrowserRouter as Router,
@@ -5,7 +6,6 @@ import {
   Routes,
   Link
 } from "react-router-dom";
-import { Fragment } from 'react'
 
 import { getStyles } from 'styles';
 
@@ -34,7 +34,12 @@ export const App = () => {
             </div>
           }/>
           <Route path="/" element={
+            <>
+
             <LoginComponent />
+            <Tabs />
+            </>
+            
           }
           />
         </Routes>
