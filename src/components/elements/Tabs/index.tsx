@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useState } from "react"
 import { getStyles } from "./styles";
 
@@ -11,7 +12,10 @@ export const Tabs = () => {
         <ul className={classes.root}>
             {tabsConfig.map(el => (
                 <li
-                    className={el === active ? classes.active : undefined}
+                    className={clsx(
+                        classes.tab,
+                        el === active ? classes.active : undefined
+                    )}
                     onClick={() => setActive(el)}>
                     {el}
                 </li>

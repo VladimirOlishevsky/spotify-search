@@ -6,6 +6,7 @@ import {
   Routes,
   Link
 } from "react-router-dom";
+import { newAuthApi, useAppDispatch } from 'redux-app';
 
 import { getStyles } from 'styles';
 
@@ -32,14 +33,12 @@ export const App = () => {
               <Search />
               <Artist />
             </div>
-          }/>
+          } />
           <Route path="/" element={
             <>
-
-            <LoginComponent />
-            <Tabs />
+              <LoginComponent />
+              <Tabs />
             </>
-            
           }
           />
         </Routes>
@@ -67,14 +66,19 @@ const LoginComponent = () => {
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
   const handleLogin = () => {
     window.location.href = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
-
-    
   };
+
+  const dispatch = useAppDispatch()
+  const click = () => newAuthApi.endpoints.getAccessToken.initiate('')
+  
+  const code = new URLSearchParams(window.location.hash).get('access_token');
+  console.log('code', code);
+  console.log('window-location', window.location.hash.split('&').find(el => el.includes('access_token'))?.split('=')[1]);
 
   return (
     <div className="container">
       <h1>hi</h1>
-      <button onClick={() => handleLogin()}>login to spotify</button>
+      <a href={`${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`}>login to spotify</a>
     </div>
   );
 }
