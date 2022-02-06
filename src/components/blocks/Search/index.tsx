@@ -1,23 +1,11 @@
 import { SearchBar } from 'components';
-import { useEffect } from 'react';
-import { useAppDispatch } from 'redux-app';
 import { getStyles } from './styles';
-import { authApi, updateAccessToken } from 'redux-app/auth';
 
 
 export const Search = () => {
+
+    window.history.pushState({}, '', '/');
     const classes = getStyles();
-
-    const dispatch = useAppDispatch(); // delete
-    const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
-
-    const { data } = accessTokenQueryResult;
-    const accessToken = data?.access_token;
-
-    useEffect(() => {
-        if (!accessToken) return;
-        dispatch(updateAccessToken(accessToken));
-    }, [dispatch, accessToken]);
 
     return (
         <div className={classes.root}>
@@ -25,3 +13,8 @@ export const Search = () => {
         </div>
     );
 }
+
+// const dispatch = useAppDispatch(); // delete
+// const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
+// const { data } = accessTokenQueryResult;
+// const accessToken = data?.access_token;

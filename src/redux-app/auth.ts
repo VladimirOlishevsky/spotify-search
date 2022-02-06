@@ -11,10 +11,7 @@ const initialState: IInitialState = {
     authToken: '',
 }
 
-console.log('1111', process.env.REACT_APP_CLIENT_ID);
-
 export const AUTH_API_REDUCER_KEY = 'authApi';
-export const NEW_AUTH_API_REDUCER_KEY = 'newAuthApi';
 
 export const authApi = createApi({
     reducerPath: AUTH_API_REDUCER_KEY,
@@ -40,40 +37,6 @@ export const authApi = createApi({
         }),
     }),
 });
-
-const SCOPES = [
-    "user-read-currently-playing",
-    "user-read-playback-state",
-    "playlist-read-private",
-  ];
-
-export const newAuthApi = createApi({
-    reducerPath: NEW_AUTH_API_REDUCER_KEY,
-    baseQuery: fetchBaseQuery({
-        baseUrl: `${process.env.REACT_APP_SPOTIFY_AUTHORIZE_ENDPOINT}`
-    }),
-    endpoints: (builder) => ({
-        getAccessToken: builder.query({
-            query: () => {
-                return ({
-                    url: 'authorize',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    params: {
-                        client_id: `${process.env.REACT_APP_CLIENT_ID}`,
-                        redirect_uri: `${process.env.REACT_APP_REDIRECT_URL_AFTER_LOGIN}`,
-                        scope: `${SCOPES.join('%20')}`,
-                        response_type: 'token',
-                        show_dialog: true
-                    },
-                });
-            },
-        }),
-    }),
-});
-
 
 
 export const authSlice = createSlice({

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'; 
 import appReducer from './app';
-import authReducer, { authApi, newAuthApi } from './auth';
+import authReducer, { authApi } from './auth';
 import { artistsApi, atristsReducer } from './artists'
 
 
@@ -11,7 +11,6 @@ export const store = configureStore({
         auth: authReducer,
         artists: atristsReducer,
         [authApi.reducerPath]: authApi.reducer,
-        [newAuthApi.reducerPath]: newAuthApi.reducer,
         [artistsApi.reducerPath]: artistsApi.reducer,
     }
 })
