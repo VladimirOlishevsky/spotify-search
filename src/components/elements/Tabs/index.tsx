@@ -1,17 +1,23 @@
 import clsx from "clsx";
-import { useState } from "react"
+import { TABS_CONFIG } from "components/constants";
 import { getStyles } from "./styles";
 
-export const Tabs = () => {
-    const classes = getStyles()
+interface ITabs {
+    active: string,
+    setActive: React.Dispatch<React.SetStateAction<TABS_CONFIG>>,
+}
 
-    const tabsConfig = ['search', 'personal'];
-    const [active, setActive] = useState(tabsConfig[0])
+export const Tabs = ({
+    active,
+    setActive,
+}: ITabs) => {
+    const classes = getStyles()
 
     return (
         <ul className={classes.root}>
-            {tabsConfig.map(el => (
+            {Object.values(TABS_CONFIG).map(el => (
                 <li
+                    key={el}
                     className={clsx(
                         classes.tab,
                         el === active ? classes.active : undefined

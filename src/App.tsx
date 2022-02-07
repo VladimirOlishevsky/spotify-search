@@ -1,4 +1,4 @@
-import { Search, Artist, Login } from 'components/blocks';
+import { Search, Artist, Login, ContentWrapper } from 'components/blocks';
 import {
   BrowserRouter as Router,
   Route,
@@ -24,7 +24,7 @@ export const App = () => {
             </div>
           } /> */}
           <Route path="/" element={
-            <Between />
+            <ContentWrapper />
             // authToken ? <Search /> : <Login />
           }
           />
