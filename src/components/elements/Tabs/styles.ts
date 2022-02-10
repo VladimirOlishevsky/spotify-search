@@ -15,8 +15,8 @@ export const getStyles = makeStyles({
         },
     },
     active: {
-        color: 'red',
-        borderTop: '1px solid red',
-        borderBottom: '1px solid red',
+        color: '#e74344',
+        borderTop: '1px solid #e74344',
+        borderBottom: '1px solid #e74344',
     }
 })

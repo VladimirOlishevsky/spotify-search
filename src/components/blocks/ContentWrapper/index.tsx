@@ -18,7 +18,10 @@ export const ContentWrapper = () => {
                     <Search />
                     <Artist />
                 </>
-                : <></>
+                :
+                <>
+                    Profile componetnts will be here
+                </>
             }
         </div>
     );
