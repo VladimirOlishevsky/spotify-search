@@ -11,9 +11,6 @@ const initialState = {
 }
 
 export const ARTISTS_API_REDUCER_KEY = 'artistsApi';
-export const ARTISTS_REATURES_API_REDUCER_KEY = 'artistsFeaturesApi';
-export const SINGLE_API_REDUCER_KEY = 'singleArtistsApi';
-export const API_PARTNER_SPOTIFY_REDUCER_KEY = 'apiPartnerSpotify';
 
 export const artistsApi = createApi({
     reducerPath: ARTISTS_API_REDUCER_KEY,

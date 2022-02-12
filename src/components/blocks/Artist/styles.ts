@@ -26,11 +26,6 @@ export const getStyles = makeStyles({
         fontSize: 60,
         fontWeight: 600
     },
-    img: {
-        width: '100%',
-        maxWidth: 300,
-        height: 'auto'
-    },
     pieChartWrapper: {
         display: 'flex', 
         width: 300, 

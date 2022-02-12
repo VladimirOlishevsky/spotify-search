@@ -3,9 +3,8 @@ import { RelatedArtists } from './RelatedArtists';
 import { getStyles } from './styles';
 import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
-
-import noImage from 'assets/no_image.jpg';
 import { PieChart } from '..';
+import { Avatar } from 'components';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
@@ -17,7 +16,7 @@ export const Artist = () => {
 
     const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: authToken, artistId: currentArtistId });
 
-    const avatar = artist?.images[0]?.url;
+    const avatarUrl = artist?.images[0]?.url || '';
     const name = artist?.name;
 
     return (
@@ -33,10 +32,7 @@ export const Artist = () => {
                             <span>
                                 Followers {artist?.followers.total}
                             </span>
-                            {avatar && <img
-                                className={classes.img}
-                                src={avatar || noImage}
-                                alt="artist-img" />}
+                            <Avatar imgUrl={avatarUrl}/>
                         </div>
                         <div className={classes.pieChartWrapper}>
                             <span>

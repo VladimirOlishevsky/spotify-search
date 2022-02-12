@@ -1,6 +1,6 @@
 import { Tabs } from 'components';
 import { TABS_CONFIG } from 'components/constants';
-import { Search, Artist } from 'components/blocks';
+import { Search, Artist, Profile } from 'components/blocks';
 import { useEffect, useState } from 'react';
 import { updateAccessToken, useAppDispatch } from 'redux-app';
 // import { getStyles } from './styles';
@@ -19,9 +19,7 @@ export const ContentWrapper = () => {
                     <Artist />
                 </>
                 :
-                <>
-                    Profile componetnts will be here
-                </>
+                <Profile />
             }
         </div>
     );

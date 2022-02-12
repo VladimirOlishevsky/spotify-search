@@ -5,3 +5,4 @@ export * from './SongCard';
 export * from './AlbumCard';
 export * from './RelatedArtistCard';
 export * from './Tabs';
+export * from './Avatar';

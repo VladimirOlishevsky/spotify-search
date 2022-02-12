@@ -101,3 +101,9 @@ export interface IArtistFeaturesApi {
         valence: number
     }[]
 }
+
+export interface IProfile {
+    display_name: string,
+    uri: string,
+    images: { url: string }[]
+}
