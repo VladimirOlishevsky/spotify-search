@@ -38,6 +38,7 @@ export interface ISingleArtistApi {
     }[],
     name: string,
     uri: string,
+    genres: string[]
 }
 
 export interface ITopTracksApi {
@@ -106,4 +107,8 @@ export interface IProfile {
     display_name: string,
     uri: string,
     images: { url: string }[]
+}
+
+export interface IFollowedArtists {
+    items: ISingleArtistApi[]
 }

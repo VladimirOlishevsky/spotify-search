@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootType } from "./store";
-import { IProfile } from "./types";
+import { IFollowedArtists, IProfile } from "./types";
 
 const initialState = {
     profile: [],
@@ -16,7 +16,7 @@ export const PROFILE_API_REDUCER_KEY = 'profileApi';
 export const profileApi = createApi({
     reducerPath: PROFILE_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://api.spotify.com/v1/`,
+        baseUrl: `https://api.spotify.com/v1`,
         // prepareHeaders: (headers, { getState }) => {
         //     const token = (getState() as RootType).auth.authToken
 
@@ -40,6 +40,24 @@ export const profileApi = createApi({
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
                     },
+                });
+            },
+        }),
+        getProfileFollowArtists: builder.query<IFollowedArtists, { token: string }>({
+            query: (args) => {
+                const { token } = args;
+                return ({
+                    url: 'me/top/artists',
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    params: {
+                        // type: 'artist',
+                        limit: 20,
+                        time_range: 'long_term'
+                    }
                 });
             },
         }),
