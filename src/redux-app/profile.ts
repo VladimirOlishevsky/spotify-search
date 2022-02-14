@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { PROFILE_TOP_REQUEST, TIME_RANGE } from "./constants";
 import { RootType } from "./store";
 import { IFollowedArtists, IProfile } from "./types";
 
@@ -16,7 +17,7 @@ export const PROFILE_API_REDUCER_KEY = 'profileApi';
 export const profileApi = createApi({
     reducerPath: PROFILE_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://api.spotify.com/v1`,
+        baseUrl: `https://api.spotify.com/v1/me`,
         // prepareHeaders: (headers, { getState }) => {
         //     const token = (getState() as RootType).auth.authToken
 
@@ -34,7 +35,7 @@ export const profileApi = createApi({
             query: (args) => {
                 const { token } = args;
                 return ({
-                    url: 'me',
+                    url: '',
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -43,11 +44,15 @@ export const profileApi = createApi({
                 });
             },
         }),
-        getProfileFollowArtists: builder.query<IFollowedArtists, { token: string }>({
+        getTopFromProfile: builder.query<IFollowedArtists, { 
+            token: string, 
+            requestType: PROFILE_TOP_REQUEST, 
+            timeRange: TIME_RANGE
+        }>({
             query: (args) => {
-                const { token } = args;
+                const { token, requestType, timeRange } = args;
                 return ({
-                    url: 'me/top/artists',
+                    url: `top/${requestType}`,
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8',
@@ -56,7 +61,23 @@ export const profileApi = createApi({
                     params: {
                         // type: 'artist',
                         limit: 20,
-                        time_range: 'long_term'
+                        time_range: `${timeRange}`
+                    }
+                });
+            },
+        }),
+        getRecentlyPlayingTracks: builder.query<any, { token: string }>({
+            query: (args) => {
+                const { token } = args;
+                return ({
+                    url: 'player/recently-played',
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    params: {
+                        limit: 30,
                     }
                 });
             },

@@ -1,5 +1,4 @@
 import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
-import { getStyles } from './styles';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
 Chart.register(ArcElement, Tooltip, Legend);
@@ -9,7 +8,6 @@ interface Type extends Record<string, number> { }
 
 export const PieChart = () => {
 
-    const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
     const { topTrackIds } = useAppSelector(artistsSelector);
     const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: topTrackIds })
