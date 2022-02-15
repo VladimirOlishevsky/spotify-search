@@ -1,5 +1,4 @@
-import { Avatar } from 'components';
-import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
+import { useAppSelector, authSelector } from 'redux-app';
 import { PROFILE_TOP_REQUEST, TIME_RANGE } from 'redux-app/constants';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
@@ -17,7 +16,6 @@ export const FollowedArtistsWrapper = () => {
         { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: TIME_RANGE.longTerm }
     )
 
-
     console.log('followedArtists', followedArtists)
 
     return (
@@ -25,10 +23,11 @@ export const FollowedArtistsWrapper = () => {
             <span className={classes.title}>Some of the artists you follow</span>
             <div className={classes.artistsWrapper}>
                 {followedArtists?.items.map(el => (
-                    <FollowedArtist name={el.name} imgUrl={el.images[0].url} followers={el.followers.total} genres={el.genres} />
-                    // <a className={classes.artist}>
-                    //     {el.name}
-                    // </a>
+                    <FollowedArtist
+                        name={el.name}
+                        imgUrl={el.images[0].url}
+                        followers={el.followers.total}
+                        genres={el.genres} />
                 ))}
             </div>
         </div>
