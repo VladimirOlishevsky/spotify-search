@@ -1,3 +1,5 @@
+import { Tabs } from 'components';
+import { useState } from 'react';
 import { useAppSelector, authSelector } from 'redux-app';
 import { PROFILE_TOP_REQUEST, TIME_RANGE } from 'redux-app/constants';
 import { profileApi } from 'redux-app/profile';
@@ -8,9 +10,10 @@ export const FollowedArtistsWrapper = () => {
 
     const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
+    const [timeRange, setTimeRange] = useState(TIME_RANGE.longTerm)
 
     // console.log('1111111', authToken)
-    const token = 'BQCNT8gzb4_HNrqJoPz4fURWyC8nr4LuWg3ebe3f38nukHF_nlxblGzRIPPwANpnggBcJxSoc0V_1uMx11skjuLvRVdk4QYLgv3Nwrr8xMyqiz4MoxyivU-nmO0FIAdw7WuC5gzPCDt9II5n2U0K3NBb_u-uFVEorUV-1Y4dwyZCDl4BW1XepAQkpMWjTKyOFi3H2i6uiR6Yk_QAAarm4EqfgeS9OFTk3w'
+    const token = 'BQC9Ehu94FFZL7qLAZdMcwvBvFUcSCJxQZQBjb3C9NPCRoivs68urgME-CZZNV3LV5dUVNT5wnQ0vw3zT5nLMBgRuL3suFGl4g3qxy-4CcShd2sdJCdWAZmmCYPLwhrGNbAtPp9W4JI9P4krbPrHV8rxNbrHtpWQv2NNh4bwJNjsS45L7YkhRGzT6h87y2LsfG9xmiuJbBA9N4oxDw47NjwjGxoatypN7A'
 
     const { data: followedArtists } = profileApi.useGetTopFromProfileQuery(
         { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: TIME_RANGE.longTerm }
@@ -20,14 +23,22 @@ export const FollowedArtistsWrapper = () => {
 
     return (
         <div className={classes.root}>
-            <span className={classes.title}>Some of the artists you follow</span>
+            <span className={classes.title}>Top listened artists</span>
+
+            <Tabs
+                values={[TIME_RANGE.longTerm, TIME_RANGE.mediumTerm, TIME_RANGE.shortTerm]}
+                active={timeRange}
+                setActive={setTimeRange}
+            />
             <div className={classes.artistsWrapper}>
-                {followedArtists?.items.map(el => (
+                {followedArtists?.items.map((el, index) => (
                     <FollowedArtist
+                        key={el.name}
                         name={el.name}
                         imgUrl={el.images[0].url}
                         followers={el.followers.total}
-                        genres={el.genres} />
+                        genres={el.genres}
+                        index={index + 1} />
                 ))}
             </div>
         </div>

@@ -14,9 +14,4 @@ export const getStyles = makeStyles({
             cursor: 'pointer'
         },
     },
-    active: {
-        color: '#e74344',
-        borderTop: '1px solid #e74344',
-        borderBottom: '1px solid #e74344',
-    }
 })

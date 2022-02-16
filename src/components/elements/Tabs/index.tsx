@@ -1,26 +1,29 @@
 import clsx from "clsx";
-import { TABS_CONFIG } from "components/constants";
 import { getStyles } from "./styles";
 
-interface ITabs {
-    active: string,
-    setActive: React.Dispatch<React.SetStateAction<TABS_CONFIG>>,
+interface ITabs<T> {
+    values: T[]
+    active: T,
+    setActive: React.Dispatch<React.SetStateAction<T>>,
+    externalClasses?: string,
 }
 
-export const Tabs = ({
+export const Tabs = <T,>({
+    values,
     active,
     setActive,
-}: ITabs) => {
+    externalClasses
+}: ITabs<T>) => {
     const classes = getStyles()
 
     return (
         <ul className={classes.root}>
-            {Object.values(TABS_CONFIG).map(el => (
+            {values.map((el, index) => (
                 <li
-                    key={el}
+                    key={index}
                     className={clsx(
                         classes.tab,
-                        el === active ? classes.active : undefined
+                        el === active && externalClasses
                     )}
                     onClick={() => setActive(el)}>
                     {el}

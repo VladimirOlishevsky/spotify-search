@@ -10,9 +10,9 @@ export const Profile = () => {
     const { authToken } = useAppSelector(authSelector);
 
     // console.log('1111111', authToken)
-    // const token = 'BQBfrSv5z7BaysjD2KEghDh7zNVeEsBX_9eXOTbxgHhjWEZbntmEJgeEBcCMD6yWhDY8JHRPrAdtZVy4rPcWvCWEd1a0uP7SIThXuO2fh9qq-EkL5mAjvcFZdEfkoEHIiRqPEsBz4QnQQ3_kcvHIbp-K2mMF7ozVQQmYTEQlPGLkOeW9cUlNh3xIOk6froEsYhkuLerjGFeX'
+    const token = 'BQC4Ohocajl-0qWnmCwQ4EV8zTqAqs24PPaRltv0pAMc_tGlgbGuIvj88KjxxoaMz49gq_HewO9e6I335r-ELcOAlYFyM6Cosol0j7HZ2gln90XLrs-UA1PsPQFESRpuFWdtVFDIbtdh-7ACekCryeKn_UJdaEOc4gyPRwdXBap0oI3H8UplSMtZP2IoVRKTe4hi_9hDiqtIkckqRnT8ChJDxCJM58gBdQ'
 
-    const { data: profile } = profileApi.useGetProfileQuery({ token: authToken })
+    const { data: profile } = profileApi.useGetProfileQuery({ token: token })
     const profileUrl = profile?.images.length ? profile.images[0].url : ''
 
     return (

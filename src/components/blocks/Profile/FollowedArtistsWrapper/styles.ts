@@ -6,14 +6,16 @@ export const getStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         width: '70%',
-        gap: 50
+        gap: 32
     },
     title: {
         fontSize: 32
     },
     artistsWrapper: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
+        gridAutoFlow: 'column',
+        gridTemplateColumns: 'repeat(2, 1fr)', 
+	    gridTemplateRows: 'repeat(10, auto)'
     },
     artist: {
         height: 32,
