@@ -59,7 +59,6 @@ export const profileApi = createApi({
                         'Authorization': `Bearer ${token}`
                     },
                     params: {
-                        // type: 'artist',
                         limit: 20,
                         time_range: `${timeRange}`
                     }

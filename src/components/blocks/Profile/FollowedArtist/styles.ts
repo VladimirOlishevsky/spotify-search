@@ -13,6 +13,8 @@ export const getStyles = makeStyles({
         gap: 16,
         padding: 16,
         boxSizing: 'border-box',
+        textDecoration: 'none',
+        color: 'inherit',
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: 'rgba(0,0,0,0.1)'

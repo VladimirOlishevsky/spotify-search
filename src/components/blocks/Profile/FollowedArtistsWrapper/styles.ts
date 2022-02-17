@@ -14,8 +14,8 @@ export const getStyles = makeStyles({
     artistsWrapper: {
         display: 'grid',
         gridAutoFlow: 'column',
-        gridTemplateColumns: 'repeat(2, 1fr)', 
-	    gridTemplateRows: 'repeat(10, auto)'
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridTemplateRows: 'repeat(10, auto)'
     },
     artist: {
         height: 32,
@@ -24,6 +24,10 @@ export const getStyles = makeStyles({
             cursor: 'pointer',
             backgroundColor: 'rgba(0,0,0,0.1)'
         }
+    },
+    active: {
+        color: '#e74344',
+        borderTop: '1px solid #e74344',
+        borderBottom: '1px solid #e74344',
     }
 })
-

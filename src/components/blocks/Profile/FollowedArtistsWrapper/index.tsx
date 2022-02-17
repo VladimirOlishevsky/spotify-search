@@ -4,19 +4,23 @@ import { useAppSelector, authSelector } from 'redux-app';
 import { PROFILE_TOP_REQUEST, TIME_RANGE } from 'redux-app/constants';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
+import { followedWrappertabs, timeValues } from './constants';
 import { getStyles } from './styles';
 
 export const FollowedArtistsWrapper = () => {
 
     const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
-    const [timeRange, setTimeRange] = useState(TIME_RANGE.longTerm)
+    const [timeRange, setTimeRange] = useState(timeValues[0]);
+
+    const requestTimeRange = followedWrappertabs[timeRange]
+    console.log('active', followedWrappertabs[timeRange])
 
     // console.log('1111111', authToken)
-    const token = 'BQC9Ehu94FFZL7qLAZdMcwvBvFUcSCJxQZQBjb3C9NPCRoivs68urgME-CZZNV3LV5dUVNT5wnQ0vw3zT5nLMBgRuL3suFGl4g3qxy-4CcShd2sdJCdWAZmmCYPLwhrGNbAtPp9W4JI9P4krbPrHV8rxNbrHtpWQv2NNh4bwJNjsS45L7YkhRGzT6h87y2LsfG9xmiuJbBA9N4oxDw47NjwjGxoatypN7A'
+    const token = 'BQARX0ANC1TWkjSZF5CF7H2QWkKQaV0D_FyTZB8GfkXBY_WykeUYkW8IAVedQGB-AKa7DS7SkHWb5Xe4yU9iECmCRKbHUZ7GgobsDorYoJtQZ42H-qP__OH6SaL1FLOx8iAIdVSVpC3rcaH655TDrCdEqON4-5ngrK0diB9Za6E-v5azGw6yQbFHhIN-TmKz5b57PJMO'
 
     const { data: followedArtists } = profileApi.useGetTopFromProfileQuery(
-        { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: TIME_RANGE.longTerm }
+        { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: requestTimeRange }
     )
 
     console.log('followedArtists', followedArtists)
@@ -26,9 +30,10 @@ export const FollowedArtistsWrapper = () => {
             <span className={classes.title}>Top listened artists</span>
 
             <Tabs
-                values={[TIME_RANGE.longTerm, TIME_RANGE.mediumTerm, TIME_RANGE.shortTerm]}
+                values={timeValues}
                 active={timeRange}
                 setActive={setTimeRange}
+                externalClasses={classes.active}
             />
             <div className={classes.artistsWrapper}>
                 {followedArtists?.items.map((el, index) => (
@@ -38,7 +43,9 @@ export const FollowedArtistsWrapper = () => {
                         imgUrl={el.images[0].url}
                         followers={el.followers.total}
                         genres={el.genres}
-                        index={index + 1} />
+                        index={index + 1}
+                        link={el.uri}
+                    />
                 ))}
             </div>
         </div>

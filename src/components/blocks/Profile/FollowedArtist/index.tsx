@@ -5,7 +5,8 @@ interface IFollowedArtist {
     name: string,
     genres: string[],
     followers: number,
-    index: number
+    index: number,
+    link: string
 }
 
 export const FollowedArtist = ({
@@ -13,11 +14,12 @@ export const FollowedArtist = ({
     name,
     genres,
     followers,
-    index
+    index,
+    link
 }: IFollowedArtist) => {
     const classes = getStyles({ imgUrl });
     return (
-        <a className={classes.artist}>
+        <a href={link} className={classes.artist}>
             <span>
                 {index}
             </span>
