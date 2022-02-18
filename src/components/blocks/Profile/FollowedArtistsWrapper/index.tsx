@@ -1,7 +1,7 @@
 import { Tabs } from 'components';
 import { useState } from 'react';
 import { useAppSelector, authSelector } from 'redux-app';
-import { PROFILE_TOP_REQUEST, TIME_RANGE } from 'redux-app/constants';
+import { PROFILE_TOP_REQUEST } from 'redux-app/constants';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
 import { followedWrappertabs, timeValues } from './constants';
