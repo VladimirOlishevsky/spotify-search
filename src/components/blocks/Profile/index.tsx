@@ -1,6 +1,7 @@
 import { Avatar } from 'components';
 import { useAppSelector, authSelector } from 'redux-app';
 import { profileApi } from 'redux-app/profile';
+import { AsideTabs } from './AsideTabs';
 import { FollowedArtistsWrapper } from './FollowedArtistsWrapper';
 import { ListenedTracksWrapper } from './ListenedTracksWrapper';
 import { RecentlyPlayedWrapper } from './RecentlyPlayedWrapper';
@@ -19,10 +20,15 @@ export const Profile = () => {
 
     return (
         <div className={classes.root}>
-            <span className={classes.title}>
-                Welcome {profile?.display_name}
-            </span>
-            <Avatar imgUrl={profileUrl} />
+            <div className={classes.header}>
+                <div className={classes.asideTabs}>
+                    <AsideTabs />
+                </div>
+                <span className={classes.title}>
+                    Welcome {profile?.display_name}
+                </span>
+                <Avatar imgUrl={profileUrl} />
+            </div>
             <FollowedArtistsWrapper />
             <ListenedTracksWrapper />
             <RecentlyPlayedWrapper />
