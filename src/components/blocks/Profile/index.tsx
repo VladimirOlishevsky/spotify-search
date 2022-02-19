@@ -2,6 +2,7 @@ import { Avatar } from 'components';
 import { useAppSelector, authSelector } from 'redux-app';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtistsWrapper } from './FollowedArtistsWrapper';
+import { ListenedTracksWrapper } from './ListenedTracksWrapper';
 import { getStyles } from './styles';
 
 export const Profile = () => {
@@ -22,6 +23,7 @@ export const Profile = () => {
             </span>
             <Avatar imgUrl={profileUrl} />
             <FollowedArtistsWrapper />
+            <ListenedTracksWrapper />
         </div>
     );
 }

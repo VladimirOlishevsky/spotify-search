@@ -17,9 +17,9 @@ export const FollowedArtistsWrapper = () => {
     console.log('active', followedWrappertabs[timeRange])
 
     // console.log('1111111', authToken)
-    const token = 'BQARX0ANC1TWkjSZF5CF7H2QWkKQaV0D_FyTZB8GfkXBY_WykeUYkW8IAVedQGB-AKa7DS7SkHWb5Xe4yU9iECmCRKbHUZ7GgobsDorYoJtQZ42H-qP__OH6SaL1FLOx8iAIdVSVpC3rcaH655TDrCdEqON4-5ngrK0diB9Za6E-v5azGw6yQbFHhIN-TmKz5b57PJMO'
+    const token = 'BQCRwb-Wu9dRNy7hO2dAWQU-4fdmvBDd0JYXGI_Oe-Y9GCGYjLB2fQNsT139tzt7z4XG-LcRF1BkqVNFuirrPOvcyqj0CcXAZWXh9u9z4sY5k1804jmzZxiDWXaepY3zpKf5s0JUWgCzV_GAVE9PG32c06BdH5O_dEfr57O0gWEa_-6Wmym_tmwTIB3WpJ96rUv_FlG-lxtfDwDvZVhnGvA'
 
-    const { data: followedArtists } = profileApi.useGetTopFromProfileQuery(
+    const { data: followedArtists } = profileApi.useGetProfileFollowedArtistsQuery(
         { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: requestTimeRange }
     )
 

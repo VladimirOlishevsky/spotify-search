@@ -41,16 +41,18 @@ export interface ISingleArtistApi {
     genres: string[]
 }
 
+export interface IAlbumApi {
+    artists: {
+        name: string,
+    }[],
+    images: {
+        url: string
+    }[]
+}
+
 export interface ITopTracksApi {
     tracks: {
-        album: {
-            artists: {
-                name: string
-            }[],
-            images: {
-                url: string
-            }[]
-        },
+        album: IAlbumApi,
         external_urls: {
             spotify: string,
         },
@@ -111,4 +113,21 @@ export interface IProfile {
 
 export interface IFollowedArtists {
     items: ISingleArtistApi[]
+}
+
+export interface ITopListenedTracks {
+    items: {
+        album: Pick<IAlbumApi, 'images'>,
+        artists: {
+            id: string,
+            name: string,
+            uri: string,
+        }[]
+        id: string,
+        name: string,
+        popularity: number,
+        preview_url: string,
+        type: string,
+        uri: string,
+    }[]
 }

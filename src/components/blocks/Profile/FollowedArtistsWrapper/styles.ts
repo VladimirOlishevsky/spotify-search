@@ -26,7 +26,7 @@ export const getStyles = makeStyles({
         }
     },
     active: {
-        color: '#e74344',
+        color: '##ff0046',
         borderTop: '1px solid #e74344',
         borderBottom: '1px solid #e74344',
     }
