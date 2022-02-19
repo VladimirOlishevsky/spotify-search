@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { PROFILE_TOP_REQUEST, TIME_RANGE } from "./constants";
 import { RootType } from "./store";
-import { IFollowedArtists, IProfile, ITopListenedTracks } from "./types";
+import { IFollowedArtists, IProfile, IRecentlyPlayed, ITopListenedTracks } from "./types";
 
 const initialState = {
     profile: [],
@@ -46,13 +46,12 @@ export const profileApi = createApi({
         }),
         getProfileFollowedArtists: builder.query<IFollowedArtists, { 
             token: string, 
-            requestType: PROFILE_TOP_REQUEST, 
             timeRange: TIME_RANGE
         }>({
             query: (args) => {
-                const { token, requestType, timeRange } = args;
+                const { token, timeRange } = args;
                 return ({
-                    url: `top/${requestType}`,
+                    url: `top/artists`,
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8',
@@ -86,7 +85,7 @@ export const profileApi = createApi({
                 });
             },
         }),
-        getRecentlyPlayingTracks: builder.query<any, { token: string }>({
+        getRecentlyPlayingTracks: builder.query<IRecentlyPlayed, { token: string }>({
             query: (args) => {
                 const { token } = args;
                 return ({
@@ -97,7 +96,7 @@ export const profileApi = createApi({
                         'Authorization': `Bearer ${token}`
                     },
                     params: {
-                        limit: 30,
+                        limit: 20,
                     }
                 });
             },

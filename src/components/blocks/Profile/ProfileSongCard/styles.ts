@@ -28,6 +28,13 @@ export const getStyles = makeStyles({
         width: 50,
         height: 65
     },
+    infoWrapper: {
+        width: '100%',
+        display: 'flex', 
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 16
+    },
     info: {
         display: 'flex', 
         flexDirection: 'column',
@@ -35,11 +42,14 @@ export const getStyles = makeStyles({
     name: {
         fontSize: 20
     },
-    genres: {
+    singers: {
         display: 'flex',
         flexWrap: 'wrap',
         gap: 4,
-
+    },
+    singerLink: {
+        textDecoration: 'none',
+        color: 'inherit'
     },
     descriptionWrapper: {
         display: 'flex',
@@ -48,7 +58,10 @@ export const getStyles = makeStyles({
         fontSize: 14
     },
     descriptionText: {
-        color: '#EDEBA0'
+        color: '#EDEBA0',
+    },
+    index: {
+        maxWidth: 20
     }
 })
 

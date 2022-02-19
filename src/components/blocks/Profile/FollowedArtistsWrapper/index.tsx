@@ -1,10 +1,9 @@
 import { Tabs } from 'components';
 import { useState } from 'react';
 import { useAppSelector, authSelector } from 'redux-app';
-import { PROFILE_TOP_REQUEST } from 'redux-app/constants';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
-import { followedWrappertabs, timeValues } from './constants';
+import { followedWrappertabs, timeValues } from '../constants';
 import { getStyles } from './styles';
 
 export const FollowedArtistsWrapper = () => {
@@ -12,18 +11,12 @@ export const FollowedArtistsWrapper = () => {
     const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
     const [timeRange, setTimeRange] = useState(timeValues[0]);
-
     const requestTimeRange = followedWrappertabs[timeRange]
-    console.log('active', followedWrappertabs[timeRange])
-
-    // console.log('1111111', authToken)
-    const token = 'BQCRwb-Wu9dRNy7hO2dAWQU-4fdmvBDd0JYXGI_Oe-Y9GCGYjLB2fQNsT139tzt7z4XG-LcRF1BkqVNFuirrPOvcyqj0CcXAZWXh9u9z4sY5k1804jmzZxiDWXaepY3zpKf5s0JUWgCzV_GAVE9PG32c06BdH5O_dEfr57O0gWEa_-6Wmym_tmwTIB3WpJ96rUv_FlG-lxtfDwDvZVhnGvA'
+    const token = 'BQAU9y3gwWJ_pww-YN0dckbkaWM-ewV42ysLK8QImWZ-smgZAXqoG4K1SHK8p7n9LgVDO6roYEg278i5oWuWeqNPPj9HgBPRSDo6lBTelbWiIlLQA6496N59kECiRetjq7ZZQOjDUSpz6GGwO1aDgzOtY8OJWvXmM3ub55tRv4HaDD0mwoc_WSE2oSKoPLEFEi_LzQqpOQnFOlD8omJSS-jteYg8UpRkcf5_lg'
 
     const { data: followedArtists } = profileApi.useGetProfileFollowedArtistsQuery(
-        { token: token, requestType: PROFILE_TOP_REQUEST.artists, timeRange: requestTimeRange }
+        { token: token, timeRange: requestTimeRange }
     )
-
-    console.log('followedArtists', followedArtists)
 
     return (
         <div className={classes.root}>

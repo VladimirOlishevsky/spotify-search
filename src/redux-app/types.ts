@@ -115,19 +115,27 @@ export interface IFollowedArtists {
     items: ISingleArtistApi[]
 }
 
-export interface ITopListenedTracks {
-    items: {
-        album: Pick<IAlbumApi, 'images'>,
-        artists: {
-            id: string,
-            name: string,
-            uri: string,
-        }[]
+export interface IProfileTrack {
+    album: Pick<IAlbumApi, 'images'>,
+    artists: {
         id: string,
         name: string,
-        popularity: number,
-        preview_url: string,
-        type: string,
         uri: string,
+    }[]
+    id: string,
+    name: string,
+    popularity: number,
+    preview_url: string,
+    type: string,
+    uri: string,
+}
+
+export interface ITopListenedTracks {
+    items: IProfileTrack[]
+}
+
+export interface IRecentlyPlayed {
+    items: {
+        track: IProfileTrack
     }[]
 }
