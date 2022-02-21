@@ -1,4 +1,5 @@
 import { SearchBar } from 'components';
+import { ToggleTheme } from 'components/elements/ToggleTheme';
 import { useEffect } from 'react';
 import { authApi, updateAccessToken, useAppDispatch } from 'redux-app';
 import { getStyles } from './styles';
@@ -26,6 +27,7 @@ export const Search = () => {
 
     return (
         <div className={classes.root}>
+            <ToggleTheme />
             <SearchBar />
         </div>
     );
