@@ -27,7 +27,6 @@ export const Search = () => {
 
     return (
         <div className={classes.root}>
-            <ToggleTheme />
             <SearchBar />
         </div>
     );

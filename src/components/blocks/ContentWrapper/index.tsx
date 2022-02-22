@@ -3,6 +3,7 @@ import { TABS_CONFIG } from 'components/constants';
 import { Search, Artist, Profile } from 'components/blocks';
 import { useState } from 'react';
 import { getStyles } from './styles';
+import { ToggleTheme } from 'components/elements/ToggleTheme';
 
 
 export const ContentWrapper = () => {
@@ -12,12 +13,15 @@ export const ContentWrapper = () => {
 
     return (
         <div>
-            <Tabs
-                values={[TABS_CONFIG.search, TABS_CONFIG.personal]}
-                active={active}
-                setActive={setActive}
-                externalClasses={classes.active}
-            />
+            <div className={classes.header}>
+                <Tabs
+                    values={[TABS_CONFIG.search, TABS_CONFIG.personal]}
+                    active={active}
+                    setActive={setActive}
+                    externalClasses={classes.active}
+                />
+                <ToggleTheme />
+            </div>
             {TABS_CONFIG.search === active ?
                 <>
                     <Search />

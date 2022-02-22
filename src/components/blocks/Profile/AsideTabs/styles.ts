@@ -13,7 +13,10 @@ export const getStyles = makeStyles({
     },
     img: {
         padding: 10,
-        border: '1px solid transparent'
+        border: '1px solid transparent',
+        '&:hover': {
+            cursor: 'pointer'
+        }
     },
     active: {
         borderBottom: '1px solid red'

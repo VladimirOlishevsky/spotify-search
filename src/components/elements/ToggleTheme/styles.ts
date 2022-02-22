@@ -9,7 +9,7 @@ export const getStyles = makeStyles({
         top: 0,
         width: 0,
         height: 30,
-        borderLeft: '2px solid #222',
+        borderLeft: '2px solid rgba(97, 150, 204, 0.56)',
         '&:hover > div': {
             display: 'initial',
             animation: '$flickerOpacify .6s ease-in-out',
