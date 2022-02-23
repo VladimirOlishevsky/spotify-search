@@ -7,7 +7,8 @@ export const getStyles = makeStyles({
         display: 'flex', 
         flexDirection: 'column', 
         gap: 8, 
-        backgroundColor: '#F9DB6D', 
+        // backgroundColor: '#F9DB6D', 
+        backgroundColor: '#FED9B7', 
         borderRadius: 32, 
         padding: 10
     },

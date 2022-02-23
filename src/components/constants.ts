@@ -4,6 +4,6 @@ export enum TABS_CONFIG {
 }
 
 export enum LOCALSTORAGE_KEYS {
-    token = '',
-    timestamp = ''
+    token = 'token',
+    timestamp = 'timestamp'
 }

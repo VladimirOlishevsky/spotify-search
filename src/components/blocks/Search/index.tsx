@@ -9,20 +9,20 @@ export const Search = () => {
 
     // временное решение 
 
-    const dispatch = useAppDispatch(); // delete
-    const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
+    // const dispatch = useAppDispatch(); // delete
+    // const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
 
-    const { data } = accessTokenQueryResult;
-    const accessToken = data?.access_token;
+    // const { data } = accessTokenQueryResult;
+    // const accessToken = data?.access_token;
 
-    useEffect(() => {
-        if (!accessToken) return;
-        dispatch(updateAccessToken(accessToken));
-    }, [dispatch, accessToken]);
+    // useEffect(() => {
+    //     if (!accessToken) return;
+    //     dispatch(updateAccessToken(accessToken));
+    // }, [dispatch, accessToken]);
     
-    // временное решение
+    // // временное решение
     
-    window.history.pushState({}, '', '/');
+    // window.history.pushState({}, '', '/');
     const classes = getStyles();
 
     return (

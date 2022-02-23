@@ -5,9 +5,6 @@ import { useAppSelector, authSelector } from 'redux-app';
 import { profileApi } from 'redux-app/profile';
 import { AsideTabs } from './AsideTabs';
 import { asideTabsConfig } from './constants';
-import { FollowedArtistsWrapper } from './FollowedArtistsWrapper';
-import { ListenedTracksWrapper } from './ListenedTracksWrapper';
-import { RecentlyPlayedWrapper } from './RecentlyPlayedWrapper';
 import { getStyles } from './styles';
 
 export const Profile = () => {
@@ -17,6 +14,9 @@ export const Profile = () => {
 
     console.log('localstorage token', localStorage.getItem(LOCALSTORAGE_KEYS.token))    
     console.log('localstorage time', localStorage.getItem(LOCALSTORAGE_KEYS.timestamp));
+    console.log('LOCALSTORAGE_KEYS', LOCALSTORAGE_KEYS.token);
+
+
 
     const [activeAsideTab, setActiveAsideTab] = useState(asideTabsConfig[0].name);
     const actualComponent = useMemo(() => asideTabsConfig.find(el => el.name === activeAsideTab)?.component, [activeAsideTab])

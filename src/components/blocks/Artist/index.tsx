@@ -5,6 +5,7 @@ import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
 import { PieChart } from '..';
 import { Avatar } from 'components';
+import { LOCALSTORAGE_KEYS } from 'components/constants';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
@@ -12,7 +13,8 @@ export const Artist = () => {
     const classes = getStyles();
 
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { authToken } = useAppSelector(authSelector);
+    // const { authToken } = useAppSelector(authSelector);
+    const authToken = localStorage.getItem(LOCALSTORAGE_KEYS.token) || ''
 
     const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: authToken, artistId: currentArtistId });
 

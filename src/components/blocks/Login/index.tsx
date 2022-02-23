@@ -23,16 +23,7 @@ export const Login = () => {
         "user-follow-read"
     ];
     const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
-
     const accessToken = window.location.hash.split('&').find(el => el.includes('access_token'))?.split('=')[1] || '';
-
-
-    // console.log('accestoken', accessToken)
-
-    // localStorage.setItem(LOCALSTORAGE_KEYS.token, accessToken)
-    // localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, JSON.stringify(Date.now()));
-
-
     window.history.pushState({}, '', '/');
 
     const dispatch = useAppDispatch();
@@ -41,7 +32,6 @@ export const Login = () => {
         if (!accessToken) return;
         localStorage.setItem(LOCALSTORAGE_KEYS.token, accessToken)
         localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, JSON.stringify(Date.now()));
-
         dispatch(updateAccessToken(accessToken));
     }, [dispatch, accessToken]);
 
