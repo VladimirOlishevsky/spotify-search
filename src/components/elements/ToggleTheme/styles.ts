@@ -1,9 +1,13 @@
 
 import { makeStyles } from '@mui/styles';
+import { CURRENT_THEME } from 'context/context';
+
+interface IProps {
+    theme: CURRENT_THEME
+}
 
 export const getStyles = makeStyles({
     root: {
-        // height: 100,
         position: 'relative',
         marginRight: '1.5rem',
         top: 0,
@@ -16,19 +20,15 @@ export const getStyles = makeStyles({
             animationIterationCount: 'infinite'
         }
     },
-
-    ///////
-
     active: {
         display: 'initial',
         animation: 'flickerOpacify .6s ease-in-out',
         animationIterationCount: 'infinite',
     },
     lights: {
-        // display: 'initial',
-        animation: '$flickerOpacify .6s ease-in-out',
+        animation: (props: IProps) => props.theme === CURRENT_THEME.dark ? undefined : '$flickerOpacify .6s ease-in-out',
         animationIterationCount: 'infinite',
-        display: 'none',
+        display: (props: IProps) => props.theme === CURRENT_THEME.dark ? 'initial' : 'none',
         position: 'absolute',
         top: 'calc(100% + 18px)',
         left: -14,
@@ -40,9 +40,6 @@ export const getStyles = makeStyles({
         width: 27,
         height: 28,
     },
-
-    ///////////
-
     lightButton: {
         display: 'flex',
         position: 'absolute',
@@ -63,22 +60,12 @@ export const getStyles = makeStyles({
                 fill: '#222'
             },
             '& path#bulbPath': {
-                fill: 'rgba(97, 150, 204, 0.56)'
+                fill: (props: IProps) => props.theme === CURRENT_THEME.dark ? '#ffc100' : 'rgba(97, 150, 204, 0.56)'
             },
             '& svg path#bgPath': {
-                fill: '#e8e8e8',
-                fillOpacity: 0.4,
+                fill: (props: IProps) => props.theme === CURRENT_THEME.dark ? '#fee488' : '#e8e8e8',
+                fillOpacity: (props: IProps) => props.theme === CURRENT_THEME.dark ? 1 : 0.4,
             }
-
-            //active dark
-            // .dark .lightbulb svg path#bulbPath {
-            //     fill: var(--yellow);
-            // }
-
-            // .dark .lightbulb svg path#bgPath {
-            //     fill: var(--yellow-light);
-            //     fill-opacity: 1;
-            // }
         },
         '&:hover svg path#bulbPath': {
             animation: '$flicker 0.6s ease-in-out',
@@ -89,7 +76,6 @@ export const getStyles = makeStyles({
             animationIterationCount: 'infinite',
         }
     },
-
     '@keyframes flicker': {
         '0%': {
             fill: 'rgba(97, 150, 204, 0.56)',
@@ -129,7 +115,6 @@ export const getStyles = makeStyles({
             fillOpacity: 1
         }
     },
-
     '@keyframes flickerOpacify': {
         '0%': {
             opacity: 0.4

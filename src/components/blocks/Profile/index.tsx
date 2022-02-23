@@ -1,4 +1,5 @@
 import { Avatar } from 'components';
+import { LOCALSTORAGE_KEYS } from 'components/constants';
 import { useMemo, useState } from 'react';
 import { useAppSelector, authSelector } from 'redux-app';
 import { profileApi } from 'redux-app/profile';
@@ -13,6 +14,10 @@ export const Profile = () => {
 
     const classes = getStyles();
     const { authToken } = useAppSelector(authSelector);
+
+    console.log('localstorage token', localStorage.getItem(LOCALSTORAGE_KEYS.token))    
+    console.log('localstorage time', localStorage.getItem(LOCALSTORAGE_KEYS.timestamp));
+
     const [activeAsideTab, setActiveAsideTab] = useState(asideTabsConfig[0].name);
     const actualComponent = useMemo(() => asideTabsConfig.find(el => el.name === activeAsideTab)?.component, [activeAsideTab])
 

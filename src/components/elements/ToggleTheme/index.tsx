@@ -1,12 +1,19 @@
-import React from "react"
+import { AppContext, CURRENT_THEME } from "context/context";
+import React, { useContext } from "react"
 import { getStyles } from "./styles"
 
 export const ToggleTheme = () => {
-    const classes = getStyles();
+    const { theme, setTheme } = useContext(AppContext);
+
+    console.log('111', theme)
+
+    const classes = getStyles({ theme });
     return (
         <div className={classes.root}>
             <div className={classes.lights}></div>
-            <button className={classes.lightButton} aria-label="Toggle theme">
+            <button
+                onClick={() => setTheme(CURRENT_THEME.dark === theme ? CURRENT_THEME.light : CURRENT_THEME.dark)}
+                className={classes.lightButton} aria-label="Toggle theme">
                 <svg
                     width="1280.000000pt"
                     height="1280.000000pt"

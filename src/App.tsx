@@ -24,8 +24,8 @@ export const App = () => {
             </div>
           } /> */}
           <Route path="/" element={
-            <ContentWrapper />
-            // authToken ? <Profile /> : <Login />
+            // <ContentWrapper />
+            authToken ? <Profile /> : <Login />
           }
           />
         </Routes>

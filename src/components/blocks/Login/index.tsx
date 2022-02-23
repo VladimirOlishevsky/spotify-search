@@ -1,3 +1,4 @@
+import { LOCALSTORAGE_KEYS } from 'components/constants';
 import { useEffect } from 'react';
 import { updateAccessToken, useAppDispatch } from 'redux-app';
 import { getStyles } from './styles';
@@ -23,13 +24,24 @@ export const Login = () => {
     ];
     const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
 
-    const accessToken = window.location.hash.split('&').find(el => el.includes('access_token'))?.split('=')[1];
+    const accessToken = window.location.hash.split('&').find(el => el.includes('access_token'))?.split('=')[1] || '';
+
+
+    // console.log('accestoken', accessToken)
+
+    // localStorage.setItem(LOCALSTORAGE_KEYS.token, accessToken)
+    // localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, JSON.stringify(Date.now()));
+
+
     window.history.pushState({}, '', '/');
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (!accessToken) return;
+        localStorage.setItem(LOCALSTORAGE_KEYS.token, accessToken)
+        localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, JSON.stringify(Date.now()));
+
         dispatch(updateAccessToken(accessToken));
     }, [dispatch, accessToken]);
 
