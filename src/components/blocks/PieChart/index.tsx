@@ -1,6 +1,8 @@
-import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
+import { artistsApi, artistsSelector, useAppSelector } from 'redux-app';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
+import { AppContext } from 'context/context';
+import { useContext } from 'react';
 Chart.register(ArcElement, Tooltip, Legend);
 //#345469
 
@@ -8,9 +10,9 @@ interface Type extends Record<string, number> { }
 
 export const PieChart = () => {
 
-    const { authToken } = useAppSelector(authSelector);
+    const { accessToken } = useContext(AppContext);
     const { topTrackIds } = useAppSelector(artistsSelector);
-    const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ token: authToken, artistIds: topTrackIds })
+    const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ token: accessToken, artistIds: topTrackIds })
 
     if (audioFeatures?.audio_features[0] === null) return null
     const adaptAudioFeatures = audioFeatures?.audio_features.reduce((acc: Type, el: Type) => {

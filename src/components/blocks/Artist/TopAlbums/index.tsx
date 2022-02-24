@@ -2,14 +2,16 @@ import { AlbumCard } from 'components/elements/AlbumCard';
 import { artistsApi, artistsSelector, useAppSelector, authSelector, TopAlbumsItems } from 'redux-app';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
+import { useContext } from 'react';
+import { AppContext } from 'context/context';
 
 
 export const TopAlbums = () => {
     const classes = getStyles();
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { authToken } = useAppSelector(authSelector);
+    const { accessToken } = useContext(AppContext)
 
-    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: authToken, artistId: currentArtistId })
+    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: accessToken, artistId: currentArtistId })
     const adaptAlbums = album?.items
         .filter(el => el.type === 'album')
         .reduce<TopAlbumsItems>(

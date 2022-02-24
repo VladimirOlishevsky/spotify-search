@@ -1,23 +1,21 @@
 import { Tabs } from 'components';
-import { useState } from 'react';
-import { useAppSelector, authSelector } from 'redux-app';
+import { useContext, useState } from 'react';
 import { profileApi } from 'redux-app/profile';
 import { getStyles } from './styles';
 import { followedWrappertabs, timeValues } from '../constants';
 import { ProfileSongCard } from '../ProfileSongCard';
+import { AppContext } from 'context/context';
 
 
 export const ListenedTracksWrapper = () => {
 
     const classes = getStyles();
-    const { authToken } = useAppSelector(authSelector);
+    const { accessToken } = useContext(AppContext);
     const [timeRange, setTimeRange] = useState(timeValues[0]);
 
     const requestTimeRange = followedWrappertabs[timeRange]
-    const token = 'BQD9KyGQuJw7AL0XPKUIC9kCfAsUzn_dSa3V-UUcY8KBQQDK1qHucacjYeBsQhW7rKVuwwkZSoduOZHI6YGbjU_zgxh1jgq3iCNaxIU7kejq5YpK10NX2ZVHFLIe9yvJlhn6FeR8dvmpjyTwBXK83RP9KAed_zqXVNIXCC0NEHLYrYGhV_kZUMIvS-HPJFF9roLVuvD59MCUjJxzbVgzAjZr_DIA7o7IHYPN8A'
-
     const { data: listenedTracks } = profileApi.useGetProfileListenedTracksQuery(
-        { token: token, timeRange: requestTimeRange }
+        { token: accessToken, timeRange: requestTimeRange }
     )
 
     return (

@@ -38,6 +38,7 @@ export const getStyles = makeStyles({
     info: {
         display: 'flex', 
         flexDirection: 'column',
+        maxWidth: '50%'
     },
     name: {
         fontSize: 20

@@ -1,9 +1,8 @@
 import { SearchResults } from 'components';
-import { LOCALSTORAGE_KEYS } from 'components/constants';
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'redux-app';
+import { AppContext } from 'context/context';
+import { useContext, useEffect, useState } from 'react';
+import { useAppDispatch } from 'redux-app';
 import { artistsApi, getArtists } from 'redux-app/artists';
-import { authSelector } from 'redux-app/auth';
 import { useDebounce } from 'utils';
 import { getStyles } from './styles';
 
@@ -11,12 +10,10 @@ export const SearchBar = () => {
     const classes = getStyles();
 
     const dispatch = useAppDispatch();
-    // const { authToken } = useAppSelector(authSelector);
-
-    const authToken = localStorage.getItem(LOCALSTORAGE_KEYS.token) || '';
+    const { accessToken } = useContext(AppContext)
     const [searchState, setSearchState] = useState('');
     const intermediateValue = useDebounce(searchState, 500);
-    const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: authToken, value: intermediateValue })
+    const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: accessToken, value: intermediateValue })
     
     useEffect(() => {
         if (data) {

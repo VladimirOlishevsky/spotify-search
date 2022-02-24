@@ -1,7 +1,6 @@
 import { Avatar } from 'components';
-import { LOCALSTORAGE_KEYS } from 'components/constants';
-import { useMemo, useState } from 'react';
-import { useAppSelector, authSelector } from 'redux-app';
+import { AppContext } from 'context/context';
+import { useContext, useMemo, useState } from 'react';
 import { profileApi } from 'redux-app/profile';
 import { AsideTabs } from './AsideTabs';
 import { asideTabsConfig } from './constants';
@@ -10,20 +9,12 @@ import { getStyles } from './styles';
 export const Profile = () => {
 
     const classes = getStyles();
-    const { authToken } = useAppSelector(authSelector);
-
-    console.log('localstorage token', localStorage.getItem(LOCALSTORAGE_KEYS.token))    
-    console.log('localstorage time', localStorage.getItem(LOCALSTORAGE_KEYS.timestamp));
-    console.log('LOCALSTORAGE_KEYS', LOCALSTORAGE_KEYS.token);
-
-
+    const { accessToken } = useContext(AppContext);
 
     const [activeAsideTab, setActiveAsideTab] = useState(asideTabsConfig[0].name);
     const actualComponent = useMemo(() => asideTabsConfig.find(el => el.name === activeAsideTab)?.component, [activeAsideTab])
 
-    const token = '' // actual token here for test
-
-    const { data: profile } = profileApi.useGetProfileQuery({ token: token })
+    const { data: profile } = profileApi.useGetProfileQuery({ token: accessToken })
     const profileUrl = profile?.images.length ? profile.images[0].url : ''
 
     return (
@@ -38,9 +29,6 @@ export const Profile = () => {
                 <Avatar imgUrl={profileUrl} />
             </div>
             {actualComponent}
-            {/* <FollowedArtistsWrapper />
-            <ListenedTracksWrapper />
-            <RecentlyPlayedWrapper /> */}
         </div>
     );
 }

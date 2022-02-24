@@ -6,6 +6,8 @@ import { TopSongs } from './TopSongs';
 import { PieChart } from '..';
 import { Avatar } from 'components';
 import { LOCALSTORAGE_KEYS } from 'components/constants';
+import { AppContext } from 'context/context';
+import { useContext } from 'react';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
@@ -14,9 +16,10 @@ export const Artist = () => {
 
     const { currentArtistId } = useAppSelector(artistsSelector);
     // const { authToken } = useAppSelector(authSelector);
-    const authToken = localStorage.getItem(LOCALSTORAGE_KEYS.token) || ''
+    // const authToken = localStorage.getItem(LOCALSTORAGE_KEYS.token) || ''
+    const { accessToken } = useContext(AppContext)
 
-    const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: authToken, artistId: currentArtistId });
+    const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: accessToken, artistId: currentArtistId });
 
     const avatarUrl = artist?.images[0]?.url || '';
     const name = artist?.name;

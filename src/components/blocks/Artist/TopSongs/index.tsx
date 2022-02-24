@@ -1,18 +1,19 @@
 import { SongCard } from 'components';
-import { artistsApi, artistsSelector, useAppSelector, authSelector, setTrackIds } from 'redux-app';
+import { artistsApi, artistsSelector, useAppSelector, setTrackIds } from 'redux-app';
 import { useAppDispatch } from 'redux-app/store';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AppContext } from 'context/context';
 
 
 export const TopSongs = () => {
     const classes = getStyles();
     const dispatch = useAppDispatch();
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { authToken } = useAppSelector(authSelector);
+    const { accessToken } = useContext(AppContext);
 
-    const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ token: authToken, artistId: currentArtistId })
+    const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ token: accessToken, artistId: currentArtistId })
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 
     const trackIds = adaptTracks?.map(el => el.id).join(',');
