@@ -25,7 +25,7 @@ export const FollowedArtistsWrapper = () => {
                 values={timeValues}
                 active={timeRange}
                 setActive={setTimeRange}
-                externalClasses={classes.active}
+                externalActiveStyles={classes.active}
             />
             <div className={classes.artistsWrapper}>
                 {followedArtists?.items.map((el, index) => (

@@ -1,5 +1,5 @@
 import { Login, ContentWrapper } from 'components/blocks';
-import { AppContext } from 'context/context';
+import { AppContext, CURRENT_THEME } from 'context/context';
 import { useContext } from 'react';
 import {
   BrowserRouter as Router,
@@ -10,9 +10,9 @@ import { getStyles } from 'styles';
 
 
 export const App = () => {
-  const classes = getStyles();
-  const { isTokenExpired } = useContext(AppContext)
 
+  const { isTokenExpired, theme } = useContext(AppContext);
+  const classes = getStyles({ theme });
   return (
     <div className={classes.root}>
       <Router>

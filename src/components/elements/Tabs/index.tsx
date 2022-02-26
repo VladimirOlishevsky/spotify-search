@@ -5,14 +5,16 @@ interface ITabs<T> {
     values: T[]
     active: T,
     setActive: React.Dispatch<React.SetStateAction<T>>,
-    externalClasses?: string,
+    externalActiveStyles?: string,
+    externalTabStyles?: string
 }
 
 export const Tabs = <T,>({
     values,
     active,
     setActive,
-    externalClasses
+    externalActiveStyles,
+    externalTabStyles
 }: ITabs<T>) => {
     const classes = getStyles()
 
@@ -21,9 +23,10 @@ export const Tabs = <T,>({
             {values.map((el, index) => (
                 <li
                     key={index}
-                    className={clsx(
+                    className={clsx( 
                         classes.tab,
-                        el === active && externalClasses
+                        externalTabStyles,
+                        el === active && externalActiveStyles
                     )}
                     onClick={() => setActive(el)}>
                     {el}

@@ -5,6 +5,10 @@ export enum CURRENT_THEME {
   dark = 'dark'
 }
 
+export interface IThemeProps {
+  theme: string
+}
+
 export interface IAppContext {
   theme: CURRENT_THEME,
   setTheme: Dispatch<SetStateAction<CURRENT_THEME>>,

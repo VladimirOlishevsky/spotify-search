@@ -25,7 +25,7 @@ export const ListenedTracksWrapper = () => {
                 values={timeValues}
                 active={timeRange}
                 setActive={setTimeRange}
-                externalClasses={classes.activetabs}
+                externalActiveStyles={classes.activetabs}
             />
             <div>
                 {listenedTracks?.items.map((el, index) => (
