@@ -15,7 +15,6 @@ export const RecentlyPlayedWrapper = () => {
     )
 
     const data = recentlyPlayed?.items.flat()
-    console.log('data', data)
 
     return (
         <div className={classes.root}>
