@@ -8,12 +8,12 @@ export const getStyles = makeStyles({
         justifyContent: 'space-between'
     },
     active: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? 'rgba(97, 150, 204, 1)' : '#e74344',
-        borderColor: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? 'rgba(97, 150, 204, 1)' : '#e74344',
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : '#e74344',
+        borderColor: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#FF7D00' : '#e74344',
         borderStyle: 'solid',
         borderWidth: '1px 0px'
     },
     tab: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#D7263D' : 'inherit' 
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : 'inherit' 
     }
 })

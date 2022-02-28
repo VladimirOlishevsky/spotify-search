@@ -1,23 +1,20 @@
-import { artistsApi, artistsSelector, useAppSelector, authSelector } from 'redux-app';
+import { artistsApi, artistsSelector, useAppSelector } from 'redux-app';
 import { RelatedArtists } from './RelatedArtists';
 import { getStyles } from './styles';
 import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
 import { PieChart } from '..';
 import { Avatar } from 'components';
-import { LOCALSTORAGE_KEYS } from 'components/constants';
 import { AppContext } from 'context/context';
 import { useContext } from 'react';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
 export const Artist = () => {
-    const classes = getStyles();
-
+    
     const { currentArtistId } = useAppSelector(artistsSelector);
-    // const { authToken } = useAppSelector(authSelector);
-    // const authToken = localStorage.getItem(LOCALSTORAGE_KEYS.token) || ''
-    const { accessToken } = useContext(AppContext)
+    const { accessToken, theme } = useContext(AppContext);
+    const classes = getStyles({ theme });
 
     const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: accessToken, artistId: currentArtistId });
 
@@ -34,13 +31,13 @@ export const Artist = () => {
                             <span className={classes.name}>
                                 {name}
                             </span>
-                            <span>
+                            <span className={classes.followers}>
                                 Followers {artist?.followers.total}
                             </span>
                             <Avatar imgUrl={avatarUrl}/>
                         </div>
                         <div className={classes.pieChartWrapper}>
-                            <span>
+                            <span className={classes.pieChartTitle}>
                                 Analysis last 5 songs
                             </span>
                             <PieChart />

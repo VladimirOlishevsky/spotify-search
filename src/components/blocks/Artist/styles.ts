@@ -1,7 +1,8 @@
 
 import { makeStyles } from '@mui/styles';
+import { CURRENT_THEME, IThemeProps } from 'context/context';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme) => ({
     root: {
         display: 'flex', 
         flexDirection: 'column', 
@@ -16,15 +17,19 @@ export const getStyles = makeStyles({
     },
     info: {
         display: 'flex',
-        gap: 80
+        gap: 80,
     },
     artistInfo: {
         display: 'flex', 
         flexDirection: 'column'
     },
     name: {
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
         fontSize: 60,
         fontWeight: 600
+    },
+    followers: {
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
     },
     pieChartWrapper: {
         display: 'flex', 
@@ -32,6 +37,9 @@ export const getStyles = makeStyles({
         alignItems: 'center', 
         flexDirection: 'column', 
         justifyContent: 'space-around'
+    },
+    pieChartTitle: {
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
     }
-})
+}))
 

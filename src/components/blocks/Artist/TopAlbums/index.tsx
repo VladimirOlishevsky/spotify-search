@@ -1,16 +1,16 @@
-import { AlbumCard } from 'components/elements/AlbumCard';
-import { artistsApi, artistsSelector, useAppSelector, authSelector, TopAlbumsItems } from 'redux-app';
+import { artistsApi, artistsSelector, useAppSelector, TopAlbumsItems } from 'redux-app';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
 import { useContext } from 'react';
 import { AppContext } from 'context/context';
+import { Title, AlbumCard } from 'components';
 
 
 export const TopAlbums = () => {
-    const classes = getStyles();
-    const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken } = useContext(AppContext)
 
+    const { currentArtistId } = useAppSelector(artistsSelector);
+    const { accessToken, theme } = useContext(AppContext);
+    const classes = getStyles({ theme });
     const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: accessToken, artistId: currentArtistId })
     const adaptAlbums = album?.items
         .filter(el => el.type === 'album')
@@ -28,9 +28,7 @@ export const TopAlbums = () => {
 
     return (
         <div className={classes.root}>
-            <div>
-                Popular albums
-            </div>
+            <Title title='Popular albums' />
             <div className={classes.albumsWrapper}>
                 {adaptAlbums?.map(el =>
                     <AlbumCard

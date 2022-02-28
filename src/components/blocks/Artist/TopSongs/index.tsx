@@ -1,4 +1,4 @@
-import { SongCard } from 'components';
+import { SongCard, Title } from 'components';
 import { artistsApi, artistsSelector, useAppSelector, setTrackIds } from 'redux-app';
 import { useAppDispatch } from 'redux-app/store';
 import { getStyles } from './styles';
@@ -8,26 +8,24 @@ import { AppContext } from 'context/context';
 
 
 export const TopSongs = () => {
-    const classes = getStyles();
+
     const dispatch = useAppDispatch();
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken } = useContext(AppContext);
-
+    const { accessToken, theme } = useContext(AppContext);
+    const classes = getStyles({ theme });
     const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ token: accessToken, artistId: currentArtistId })
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 
     const trackIds = adaptTracks?.map(el => el.id).join(',');
     useEffect(() => {
         trackIds && dispatch(setTrackIds(trackIds))
-    },[trackIds, dispatch])
+    }, [trackIds, dispatch])
 
-    if(!topTracks?.tracks.length) return null
+    if (!topTracks?.tracks.length) return null
 
     return (
         <div className={classes.root}>
-            <div>
-                Popular tracks
-            </div>
+            <Title title='Popular tracks' />
             <div className={classes.songsWrapper}>
                 {adaptTracks?.map(el =>
                     <SongCard

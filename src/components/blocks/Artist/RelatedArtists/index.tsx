@@ -1,16 +1,16 @@
 import { artistsApi, artistsSelector, useAppSelector } from 'redux-app';
 import { getStyles } from './styles';
-import { RelatedArtistCard } from 'components';
+import { RelatedArtistCard, Title } from 'components';
 import noImage from 'assets/no_image.jpg';
 import { useContext } from 'react';
 import { AppContext } from 'context/context';
 
 
 export const RelatedArtists = () => {
-    const classes = getStyles();
-    const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken } = useContext(AppContext)
 
+    const { currentArtistId } = useAppSelector(artistsSelector);
+    const { accessToken, theme } = useContext(AppContext);
+    const classes = getStyles({ theme });
     const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ token: accessToken, artistId: currentArtistId })
     const adaptRelatedArtists = relatedArtists?.artists.slice(0, 5);
 
@@ -18,9 +18,7 @@ export const RelatedArtists = () => {
 
     return (
         <div className={classes.root}>
-            <div>
-                Related Artists
-            </div>
+            <Title title='Related Artists' />
             <div className={classes.relatedArtists}>
                 {adaptRelatedArtists?.map(el =>
                     <RelatedArtistCard
