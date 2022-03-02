@@ -1,5 +1,7 @@
 import { getStyles } from './styles';
 import { Typography } from '@mui/material';
+import { useContext } from 'react';
+import { AppContext } from 'context/context';
 
 interface ISongCard {
     img: string,
@@ -14,7 +16,8 @@ export const SongCard = ({
     songArtist,
     urlToSpotify
 }: ISongCard) => {
-    const classes = getStyles();
+    const { theme } = useContext(AppContext)
+    const classes = getStyles({ theme });
 
     return (
         <div className={classes.root}>
@@ -27,7 +30,7 @@ export const SongCard = ({
                         {songName}
                     </Typography>
                     <div className={classes.author}>
-                        {songArtist.map(el => <Typography key={el}>{el}</Typography>)}
+                        {songArtist.map(el => <Typography className={classes.authorName} key={el}>{el}</Typography>)}
                     </div>
                 </div>
             </div>

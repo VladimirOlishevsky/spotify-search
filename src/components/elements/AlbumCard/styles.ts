@@ -1,5 +1,6 @@
 
 import { makeStyles } from '@mui/styles';
+import { CURRENT_THEME, IThemeProps } from 'context/context';
 
 export const getStyles = makeStyles({
     root: {
@@ -14,13 +15,21 @@ export const getStyles = makeStyles({
         padding: 16,
         gap: 24,
         color: 'inherit',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        '&:hover': {
+            transform: 'translateY(-1px)'
+        },
     },
     albumName: {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         width: 'inherit',
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
+        fontWeight: 500 // переопределить тему
+    },
+    albumDate: {
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#EBBAB9' : 'inherit',
     },
     info: {
         width: '100%',

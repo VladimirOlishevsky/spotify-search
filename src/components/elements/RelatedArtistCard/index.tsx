@@ -1,5 +1,7 @@
 import { getStyles } from './styles';
 import { useAppDispatch, getSingleArtist, clearArtistsList } from 'redux-app';
+import { useContext } from 'react';
+import { AppContext } from 'context/context';
 
 
 interface IRelatedArtistCard {
@@ -13,7 +15,8 @@ export const RelatedArtistCard = ({
     name,
     id
 }: IRelatedArtistCard) => {
-    const classes = getStyles();
+    const{ theme } = useContext(AppContext)
+    const classes = getStyles({ theme });
 
     const dispatch = useAppDispatch();
     const click = (value: string) => {
@@ -28,7 +31,7 @@ export const RelatedArtistCard = ({
             <img className={classes.img}
                 src={img}
                 alt="song-img" />
-            <span>{name}</span>
+            <span className={classes.name}>{name}</span>
         </button>
     );
 }

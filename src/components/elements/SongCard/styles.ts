@@ -1,5 +1,6 @@
 
 import { makeStyles } from '@mui/styles';
+import { CURRENT_THEME, IThemeProps } from 'context/context';
 
 export const getStyles = makeStyles({
     root: {
@@ -21,12 +22,17 @@ export const getStyles = makeStyles({
         justifyContent: 'center'
     },
     songName: {
-        fontSize: 18
+        fontSize: 18,
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
+        fontWeight: 500
     },
     author: {
         display: 'flex',
         flexDirection: 'row',
         fontSize: 14
+    },
+    authorName: {
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#EBBAB9' : 'inherit',
     },
     img: {
         width: '100%',
