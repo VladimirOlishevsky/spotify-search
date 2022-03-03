@@ -1,8 +1,11 @@
 
 import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles'
 import { CURRENT_THEME, IThemeProps } from 'context/context';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: Theme) => {
+    console.log(theme); 
+    return ({
     header: {
         display: 'flex', 
         justifyContent: 'space-between'
@@ -14,6 +17,6 @@ export const getStyles = makeStyles({
         borderWidth: '1px 0px'
     },
     tab: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : 'inherit' 
+        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : 'inherit',
     }
-})
+})})
