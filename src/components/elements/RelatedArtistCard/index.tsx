@@ -1,7 +1,6 @@
 import { getStyles } from './styles';
 import { useAppDispatch, getSingleArtist, clearArtistsList } from 'redux-app';
-import { useContext } from 'react';
-import { AppContext } from 'context/context';
+import { Typography } from '@mui/material';
 
 
 interface IRelatedArtistCard {
@@ -15,8 +14,7 @@ export const RelatedArtistCard = ({
     name,
     id
 }: IRelatedArtistCard) => {
-    const{ theme } = useContext(AppContext)
-    const classes = getStyles({ theme });
+    const classes = getStyles();
 
     const dispatch = useAppDispatch();
     const click = (value: string) => {
@@ -31,7 +29,7 @@ export const RelatedArtistCard = ({
             <img className={classes.img}
                 src={img}
                 alt="song-img" />
-            <span className={classes.name}>{name}</span>
+            <Typography variant='h5' className={classes.name}>{name}</Typography>
         </button>
     );
 }

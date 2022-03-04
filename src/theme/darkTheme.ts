@@ -15,11 +15,11 @@ export const darkTheme = {
       default: '#4D4D4D',
     },
   },
-  dividerColor: {
-    default: 'rgba(255,255,255,0.3)',
-    light: 'rgba(255,255,255,0.1)',
+  headerTabs: {
+    active: {
+      color: '#e74344',
+      borderColor: '#e74344'
+    },
+    color: 'inherit'
   },
-  moreDark: { // test custom, update
-    color: '#333333'
-  }
 };

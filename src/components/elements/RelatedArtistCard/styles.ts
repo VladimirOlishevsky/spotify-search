@@ -1,8 +1,8 @@
 
 import { makeStyles } from '@mui/styles';
-import { CURRENT_THEME, IThemeProps } from 'context/context';
+import { DefaultTheme } from '@mui/material';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         background: 'none',
         border: 'none',
@@ -30,7 +30,6 @@ export const getStyles = makeStyles({
         height: 50,
     },
     name: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
-        fontWeight: 500
+        color: theme.search?.text.text,
     }
-})
+}))

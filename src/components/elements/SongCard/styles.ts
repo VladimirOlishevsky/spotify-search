@@ -1,8 +1,8 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { CURRENT_THEME, IThemeProps } from 'context/context';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex',
         alignItems: 'center',
@@ -23,7 +23,7 @@ export const getStyles = makeStyles({
     },
     songName: {
         fontSize: 18,
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
+        color: theme.search?.text.text,
         fontWeight: 500
     },
     author: {
@@ -32,7 +32,7 @@ export const getStyles = makeStyles({
         fontSize: 14
     },
     authorName: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#EBBAB9' : 'inherit',
+        color: theme.search?.text.description,
     },
     img: {
         width: '100%',
@@ -80,4 +80,4 @@ export const getStyles = makeStyles({
             transform: 'translateY(0)'
         }
       }
-})
+}))

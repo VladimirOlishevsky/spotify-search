@@ -1,8 +1,8 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { CURRENT_THEME, IThemeProps } from 'context/context';
 
-export const getStyles = makeStyles((theme) => ({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex', 
         flexDirection: 'column', 
@@ -24,12 +24,12 @@ export const getStyles = makeStyles((theme) => ({
         flexDirection: 'column'
     },
     name: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
+        color: theme.search?.text.titles,
         fontSize: 60,
         fontWeight: 600
     },
     followers: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
+        color: theme.search?.text.titles,
     },
     pieChartWrapper: {
         display: 'flex', 
@@ -39,7 +39,7 @@ export const getStyles = makeStyles((theme) => ({
         justifyContent: 'space-around'
     },
     pieChartTitle: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
+        color: theme.search?.text.titles,
     }
 }))
 

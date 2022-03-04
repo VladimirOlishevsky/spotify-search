@@ -13,8 +13,8 @@ import { useContext } from 'react';
 export const Artist = () => {
     
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken, theme } = useContext(AppContext);
-    const classes = getStyles({ theme });
+    const { accessToken } = useContext(AppContext);
+    const classes = getStyles();
 
     const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: accessToken, artistId: currentArtistId });
 

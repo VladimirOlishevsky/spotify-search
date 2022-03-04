@@ -56,10 +56,10 @@ export const getStyles = makeStyles({
         '& svg': {
             width: 50,
             height: 50,
-            '& path:not(#bulbPath)': {
+            '& path:not(#path00)': {
                 fill: '#222'
             },
-            '& path#bulbPath': {
+            '& path#path00': {
                 fill: (props: IProps) => props.theme === CURRENT_THEME.dark ? '#ffc100' : 'rgba(97, 150, 204, 0.56)'
             },
             '& svg path#bgPath': {
@@ -67,7 +67,7 @@ export const getStyles = makeStyles({
                 fillOpacity: (props: IProps) => props.theme === CURRENT_THEME.dark ? 1 : 0.4,
             }
         },
-        '&:hover svg path#bulbPath': {
+        '&:hover svg path#path00': {
             animation: '$flicker 0.6s ease-in-out',
             animationIterationCount: 'infinite',
         },

@@ -1,22 +1,19 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/material/styles'
-import { CURRENT_THEME, IThemeProps } from 'context/context';
 
-export const getStyles = makeStyles((theme: Theme) => {
-    console.log(theme); 
-    return ({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     header: {
-        display: 'flex', 
+        display: 'flex',
         justifyContent: 'space-between'
     },
     active: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : '#e74344',
-        borderColor: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#FF7D00' : '#e74344',
+        color: theme.headerTabs.active.color,
+        borderColor: theme.headerTabs.active.borderColor,
         borderStyle: 'solid',
-        borderWidth: '1px 0px'
+        borderWidth: '1px 0px',
     },
     tab: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#04395E' : 'inherit',
+        color: theme.headerTabs.color,
     }
-})})
+}))

@@ -1,17 +1,15 @@
 import { Tabs } from 'components';
 import { TABS_CONFIG } from 'components/constants';
 import { Search, Artist, Profile } from 'components/blocks';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { getStyles } from './styles';
 import { ToggleTheme } from 'components/elements/ToggleTheme';
-import { AppContext } from 'context/context';
 
 
 export const ContentWrapper = () => {
 
-    const { theme } = useContext(AppContext);
     const [active, setActive] = useState(TABS_CONFIG.search);
-    const classes = getStyles({ theme });
+    const classes = getStyles();
 
     return (
         <div>
