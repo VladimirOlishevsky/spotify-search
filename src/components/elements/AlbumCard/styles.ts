@@ -26,7 +26,6 @@ export const getStyles = makeStyles({
         whiteSpace: 'nowrap',
         width: 'inherit',
         color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
-        fontWeight: 500 // переопределить тему
     },
     albumDate: {
         color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#EBBAB9' : 'inherit',

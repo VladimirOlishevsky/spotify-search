@@ -22,7 +22,8 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         color: 'inherit',
         textDecoration: 'none',
         '&:hover': {
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transform: 'translateY(-1px)'
         }
     },
     img: {

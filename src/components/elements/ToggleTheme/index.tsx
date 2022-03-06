@@ -1,5 +1,5 @@
 import { AppContext, CURRENT_THEME } from "context/context";
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { getStyles } from "./styles"
 
 export const ToggleTheme = () => {

@@ -8,22 +8,22 @@ import { ToggleTheme } from 'components/elements/ToggleTheme';
 
 export const ContentWrapper = () => {
 
-    const [active, setActive] = useState(TABS_CONFIG.search);
+    const [activeTab, setActiveTab] = useState(TABS_CONFIG.search);
     const classes = getStyles();
 
     return (
-        <div>
+        <div className={classes.root}>
             <div className={classes.header}>
                 <Tabs
                     values={[TABS_CONFIG.search, TABS_CONFIG.personal]}
-                    active={active}
-                    setActive={setActive}
+                    active={activeTab}
+                    setActive={setActiveTab}
                     externalActiveStyles={classes.active}
                     externalTabStyles={classes.tab}
                 />
                 <ToggleTheme />
             </div>
-            {TABS_CONFIG.search === active ?
+            {TABS_CONFIG.search === activeTab ?
                 <>
                     <Search />
                     <Artist />

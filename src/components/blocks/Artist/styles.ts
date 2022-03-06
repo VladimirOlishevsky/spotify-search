@@ -13,11 +13,12 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         flexDirection: 'column',
         maxWidth: 1200,
         width: '100%',
-        gap: 32
+        gap: theme.spacing(4)
     },
     info: {
         display: 'flex',
-        gap: 80,
+        gap: theme.spacing(10),
+        justifyContent: 'center'
     },
     artistInfo: {
         display: 'flex', 

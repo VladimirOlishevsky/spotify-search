@@ -1,17 +1,18 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        gap: 16
+        gap: theme.spacing(2)
     },
     albumsWrapper: {
         display: 'flex',
         flexDirection: 'row',
-        gap: 8,
+        gap: theme.spacing(),
         flexWrap: 'wrap'
     },
-})
+}))
 
