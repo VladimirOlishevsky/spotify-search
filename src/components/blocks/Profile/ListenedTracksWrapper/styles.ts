@@ -1,21 +1,22 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
         maxWidth: '70%',
         width: '100%',
-        gap: 32
+        gap: theme.spacing(4)
     },
-    title: {
-        fontSize: 32
+    tabStyles: {
+        color: theme.profile.tabStyles.color
     },
     activetabs: {
-        color: '#ff0046',
-        borderTop: '1px solid #e74344',
-        borderBottom: '1px solid #e74344',
-    },
-})
+        color: theme.profile.tabStyles.active.color,
+        borderTop: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
+        borderBottom: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
+    }
+}))
 

@@ -1,3 +1,6 @@
+import { Typography } from '@mui/material';
+import { Title } from 'components';
+import { TITLE_VARIANT } from 'components/constants';
 import { getStyles } from './styles';
 
 interface IFollowedArtist {
@@ -20,12 +23,12 @@ export const FollowedArtist = ({
     const classes = getStyles({ imgUrl });
     return (
         <a href={link} className={classes.artist}>
-            <span>
+            <Typography variant='h5' className={classes.count}>
                 {index}
-            </span>
+            </Typography>
             <div className={classes.img} />
             <div className={classes.info}>
-                <span className={classes.name}>{name}</span>
+                <Title type={TITLE_VARIANT.profileCard} variant='h3' title={name} />
                 <div className={classes.descriptionWrapper}>
                     <div className={classes.genres}>
                         <span>genres:</span>

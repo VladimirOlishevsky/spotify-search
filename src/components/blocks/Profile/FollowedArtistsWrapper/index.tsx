@@ -1,10 +1,11 @@
-import { Tabs } from 'components';
+import { Tabs, Title } from 'components';
 import { useContext, useState } from 'react';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
 import { followedWrappertabs, timeValues } from '../constants';
 import { getStyles } from './styles';
 import { AppContext } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
 
 export const FollowedArtistsWrapper = () => {
 
@@ -19,12 +20,12 @@ export const FollowedArtistsWrapper = () => {
 
     return (
         <div className={classes.root}>
-            <span className={classes.title}>Top listened artists</span>
-
+            <Title type={TITLE_VARIANT.profile} variant='h1' title='Top listened artists' />
             <Tabs
                 values={timeValues}
                 active={timeRange}
                 setActive={setTimeRange}
+                externalTabStyles={classes.tabStyles}
                 externalActiveStyles={classes.active}
             />
             <div className={classes.artistsWrapper}>

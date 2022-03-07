@@ -1,17 +1,18 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 interface IProps {
     imgUrl: string
 }
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     artist: {
         display: 'flex',
         alignItems: 'center',
         width: '100%',
-        gap: 16,
-        padding: 16,
+        gap: theme.spacing(2),
+        padding: theme.spacing(2),
         boxSizing: 'border-box',
         textDecoration: 'none',
         color: 'inherit',
@@ -25,30 +26,34 @@ export const getStyles = makeStyles({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '50% 50%',
-        width: 50,
+        maxWidth: 50,
+        width: '100%',
         height: 65
     },
     info: {
         display: 'flex', 
         flexDirection: 'column',
     },
-    name: {
-        fontSize: 20
-    },
     genres: {
         display: 'flex',
         flexWrap: 'wrap',
-        gap: 4,
-
+        gap: theme.spacing(0.5),
+        color: theme.profile.card.genres,
     },
     descriptionWrapper: {
         display: 'flex',
         flexDirection: 'column',
-        gap: 4,
-        fontSize: 14
+        gap: theme.spacing(0.5),
+        fontSize: theme.typography.body2.fontSize
+    },
+    count: {
+        maxWidth: 30,
+        width: '100%',
+        textAlign: 'center',
+        color: theme.profile.card.description
     },
     descriptionText: {
-        color: '#EDEBA0'
+        color: theme.profile.card.description
     }
-})
+}))
 

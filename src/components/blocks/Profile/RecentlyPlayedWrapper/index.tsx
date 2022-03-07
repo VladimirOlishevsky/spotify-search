@@ -3,6 +3,8 @@ import { getStyles } from './styles';
 import { ProfileSongCard } from '../ProfileSongCard';
 import { useContext } from 'react';
 import { AppContext } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
+import { Title } from 'components';
 
 
 export const RecentlyPlayedWrapper = () => {
@@ -13,12 +15,10 @@ export const RecentlyPlayedWrapper = () => {
     const { data: recentlyPlayed } = profileApi.useGetRecentlyPlayingTracksQuery(
         { token: accessToken }
     )
-
     const data = recentlyPlayed?.items.flat()
-
     return (
         <div className={classes.root}>
-            <span className={classes.title}>Last Recently Played Songs</span>
+            <Title type={TITLE_VARIANT.profile} variant='h1' title='Last Recently Played Song' />
             <div>
                 {data?.map((el, index) => (
                     <ProfileSongCard

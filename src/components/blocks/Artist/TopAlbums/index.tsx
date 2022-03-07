@@ -4,6 +4,7 @@ import noImage from 'assets/no_image.jpg';
 import { useContext } from 'react';
 import { AppContext } from 'context/context';
 import { Title, AlbumCard } from 'components';
+import { TITLE_VARIANT } from 'components/constants';
 
 
 export const TopAlbums = () => {
@@ -28,7 +29,7 @@ export const TopAlbums = () => {
 
     return (
         <div className={classes.root}>
-            <Title title='Popular albums' />
+            <Title type={TITLE_VARIANT.search} variant='h1' title='Popular albums' />
             <div className={classes.albumsWrapper}>
                 {adaptAlbums?.map(el =>
                     <AlbumCard

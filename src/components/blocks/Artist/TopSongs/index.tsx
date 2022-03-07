@@ -5,6 +5,7 @@ import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
 import { useContext, useEffect } from 'react';
 import { AppContext } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
 
 
 export const TopSongs = () => {
@@ -25,7 +26,7 @@ export const TopSongs = () => {
 
     return (
         <div className={classes.root}>
-            <Title title='Popular tracks' />
+            <Title type={TITLE_VARIANT.search} variant='h1' title='Popular tracks' />
             <div className={classes.songsWrapper}>
                 {adaptTracks?.map(el =>
                     <SongCard

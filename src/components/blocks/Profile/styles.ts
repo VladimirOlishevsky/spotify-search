@@ -1,17 +1,18 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex', 
         flexDirection: 'column', 
         width: '100%', 
         alignItems: 'center', 
-        gap: 50,
+        gap: theme.spacing(6.5),
         position: 'relative',
     },
     title: {
-       fontSize: 32
+        color: theme.profile.title
     },
     header: {
         display: 'flex',
@@ -19,11 +20,12 @@ export const getStyles = makeStyles({
         alignItems: 'center',
         maxWidth: '70%',
         width: '100%',
+        gap: theme.spacing(4)
     },
     asideTabs: {
         position: 'absolute',
-        top: 50,
+        top: theme.spacing(6.5),
         left: 0
     }
-})
+}))
 

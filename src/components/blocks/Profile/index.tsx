@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { Avatar } from 'components';
 import { AppContext } from 'context/context';
 import { useContext, useMemo, useState } from 'react';
@@ -19,13 +20,11 @@ export const Profile = () => {
 
     return (
         <div className={classes.root}>
+            <div className={classes.asideTabs}>
+                <AsideTabs activeAsideTab={activeAsideTab} setActiveAsideTab={setActiveAsideTab} />
+            </div>
             <div className={classes.header}>
-                <div className={classes.asideTabs}>
-                    <AsideTabs activeAsideTab={activeAsideTab} setActiveAsideTab={setActiveAsideTab} />
-                </div>
-                <span className={classes.title}>
-                    Welcome {profile?.display_name}
-                </span>
+                <Typography className={classes.title} variant='h1'>Welcome {profile?.display_name}</Typography>
                 <Avatar imgUrl={profileUrl} />
             </div>
             {actualComponent}

@@ -1,15 +1,13 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
         width: '70%',
-        gap: 32
-    },
-    title: {
-        fontSize: 32
+        gap: theme.spacing(4)
     },
     artistsWrapper: {
         display: 'grid',
@@ -17,17 +15,12 @@ export const getStyles = makeStyles({
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridTemplateRows: 'repeat(10, auto)'
     },
-    artist: {
-        height: 32,
-        width: '100%',
-        '&:hover': {
-            cursor: 'pointer',
-            backgroundColor: 'rgba(0,0,0,0.1)'
-        }
+    tabStyles: {
+        color: theme.profile.tabStyles.color
     },
     active: {
-        color: '#ff0046',
-        borderTop: '1px solid #e74344',
-        borderBottom: '1px solid #e74344',
+        color: theme.profile.tabStyles.active.color,
+        borderTop: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
+        borderBottom: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
     }
-})
+}))

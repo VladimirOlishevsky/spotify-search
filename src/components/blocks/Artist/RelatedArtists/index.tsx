@@ -4,6 +4,7 @@ import { RelatedArtistCard, Title } from 'components';
 import noImage from 'assets/no_image.jpg';
 import { useContext } from 'react';
 import { AppContext } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
 
 
 export const RelatedArtists = () => {
@@ -18,7 +19,7 @@ export const RelatedArtists = () => {
 
     return (
         <div className={classes.root}>
-            <Title title='Related Artists' />
+            <Title type={TITLE_VARIANT.search} variant='h1' title='Related Artists' />
             <div className={classes.relatedArtists}>
                 {adaptRelatedArtists?.map(el =>
                     <RelatedArtistCard

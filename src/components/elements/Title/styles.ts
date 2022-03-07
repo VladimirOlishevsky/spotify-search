@@ -1,10 +1,15 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { CURRENT_THEME, IThemeProps } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
+import { getTitleColor } from './utils';
 
-export const getStyles = makeStyles({
+interface IProps {
+    type: TITLE_VARIANT
+}
+
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#15616D' : 'inherit',
-        fontWeight: 500
+        color: (props: IProps) => getTitleColor(props.type, theme),
     },
-})
+}))

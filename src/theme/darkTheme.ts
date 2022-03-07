@@ -22,4 +22,19 @@ export const darkTheme = {
     },
     color: 'inherit'
   },
+  profile: {
+    title: '#DBFE87',
+    tabStyles: {
+      active: {
+        color: '#ff0046',
+        borderColor: '#e74344'
+      },
+      color: 'inherit'
+    },
+    card: {
+      title: 'inherit',
+      genres: 'inherit',
+      description: '#EDEBA0'
+    }
+  },
 };

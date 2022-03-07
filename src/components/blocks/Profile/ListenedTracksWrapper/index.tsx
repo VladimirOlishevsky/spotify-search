@@ -1,10 +1,11 @@
-import { Tabs } from 'components';
+import { Tabs, Title } from 'components';
 import { useContext, useState } from 'react';
 import { profileApi } from 'redux-app/profile';
 import { getStyles } from './styles';
 import { followedWrappertabs, timeValues } from '../constants';
 import { ProfileSongCard } from '../ProfileSongCard';
 import { AppContext } from 'context/context';
+import { TITLE_VARIANT } from 'components/constants';
 
 
 export const ListenedTracksWrapper = () => {
@@ -20,11 +21,12 @@ export const ListenedTracksWrapper = () => {
 
     return (
         <div className={classes.root}>
-            <span className={classes.title}>Top listened songs</span>
+            <Title type={TITLE_VARIANT.profile} variant='h1' title='Top listened songs' />
             <Tabs
                 values={timeValues}
                 active={timeRange}
                 setActive={setTimeRange}
+                externalTabStyles={classes.tabStyles}
                 externalActiveStyles={classes.activetabs}
             />
             <div>

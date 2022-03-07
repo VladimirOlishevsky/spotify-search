@@ -2,7 +2,6 @@ import { TIME_RANGE } from "redux-app/constants";
 import recently from 'assets/recently.png';
 import artist from 'assets/artist.png';
 import song from 'assets/song.png';
-import React from 'react'
 import { ListenedTracksWrapper } from "./ListenedTracksWrapper";
 import { FollowedArtistsWrapper } from "./FollowedArtistsWrapper";
 import { RecentlyPlayedWrapper } from "./RecentlyPlayedWrapper";

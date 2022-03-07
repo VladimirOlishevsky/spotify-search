@@ -6,5 +6,5 @@ export const textSizeVariant = {
   h5: 16,
   body1: 16,
   body2: 14,
-  captionText: 12,
+  caption: 12,
 };

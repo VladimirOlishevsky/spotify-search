@@ -1,4 +1,6 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { Title } from 'components';
+import { TITLE_VARIANT } from 'components/constants';
 import { getStyles } from './styles';
 
 interface IListenedTrack {
@@ -25,21 +27,19 @@ export const ProfileSongCard = ({
     const classes = getStyles({ imgUrl });
     return (
         <Box onClick={() => window.location.assign(link)} className={classes.root}>
-            <span className={classes.index}>
+            <Typography variant='h5' className={classes.count}>
                 {index}
-            </span>
+            </Typography>
             <div className={classes.img} />
 
             <div className={classes.infoWrapper}>
                 <div className={classes.info}>
-                    <span className={classes.name}>{name}</span>
+                    <Title type={TITLE_VARIANT.profileCard} variant='h3' title={name} />
                     <div className={classes.descriptionWrapper}>
                         <div className={classes.singers}>
                             {artists.map((el, index) => (
                                 <span key={el.id} className={classes.descriptionText}>
-                                    <a className={classes.singerLink} onClick={() => { }}>
-                                        {`${el.name}${index === artists.length - 1 ? '' : ','}`}
-                                    </a>
+                                    {`${el.name}${index === artists.length - 1 ? '' : ','}`}
                                 </span>
                             ))}
                         </div>
