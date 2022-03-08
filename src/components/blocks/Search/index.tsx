@@ -41,8 +41,3 @@ export const Search = () => {
         </div>
     )
 }
-
-// const dispatch = useAppDispatch(); // delete
-// const accessTokenQueryResult = authApi.endpoints.getAccessToken.useQuery('');
-// const { data } = accessTokenQueryResult;
-// const accessToken = data?.access_token;

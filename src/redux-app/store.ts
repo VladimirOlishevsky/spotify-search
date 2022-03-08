@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'; 
-import appReducer from './app';
 import authReducer, { authApi } from './auth';
 import { artistsApi, atristsReducer } from './artists';
 import { profileReducer, profileApi } from './profile'
@@ -8,7 +7,6 @@ import { profileReducer, profileApi } from './profile'
 
 export const store = configureStore({
     reducer: {
-        app: appReducer,
         auth: authReducer,
         artists: atristsReducer,
         profile: profileReducer,

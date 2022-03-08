@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { PROFILE_TOP_REQUEST, TIME_RANGE } from "./constants";
+import { LOCALSTORAGE_KEYS } from "components/constants";
+import { TIME_RANGE } from "./constants";
 import { RootType } from "./store";
 import { IFollowedArtists, IProfile, IRecentlyPlayed, ITopListenedTracks } from "./types";
 
 const initialState = {
     profile: [],
-    // currentArtistId: '',
-    // topTrackIds: ''
 }
 
 export const PROFILE_API_REDUCER_KEY = 'profileApi';
@@ -18,45 +17,33 @@ export const profileApi = createApi({
     reducerPath: PROFILE_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
         baseUrl: `https://api.spotify.com/v1/me`,
-        // prepareHeaders: (headers, { getState }) => {
-        //     const token = (getState() as RootType).auth.authToken
-
-        //     console.log('token', token)
-        //     // If we have a token set in state, let's assume that we should be passing it.
-        //     if (token) {
-        //         headers.set('Authorization', `Bearer ${token}`)
-        //     }
-        //     return headers
-        // },
+        prepareHeaders: (headers) => {
+            const accessToken = localStorage.getItem(LOCALSTORAGE_KEYS.token);
+            if (accessToken) {
+                headers.set('Authorization', `Bearer ${accessToken}`)
+                headers.set( 'Content-Type', 'application/json; charset=utf-8')
+            }
+            return headers
+        },
     }),
 
     endpoints: (builder) => ({
-        getProfile: builder.query<IProfile, { token: string }>({
-            query: (args) => {
-                const { token } = args;
+        getProfile: builder.query<IProfile, void>({
+            query: () => {
                 return ({
                     url: '',
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
         getProfileFollowedArtists: builder.query<IFollowedArtists, { 
-            token: string, 
             timeRange: TIME_RANGE
         }>({
             query: (args) => {
-                const { token, timeRange } = args;
+                const { timeRange } = args;
                 return ({
                     url: `top/artists`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8',
-                        'Authorization': `Bearer ${token}`
-                    },
                     params: {
                         limit: 20,
                         time_range: `${timeRange}`
@@ -65,19 +52,13 @@ export const profileApi = createApi({
             },
         }),
         getProfileListenedTracks: builder.query<ITopListenedTracks, { 
-            token: string, 
-            // requestType: PROFILE_TOP_REQUEST, 
             timeRange: TIME_RANGE
         }>({
             query: (args) => {
-                const { token, timeRange } = args;
+                const { timeRange } = args;
                 return ({
                     url: `top/tracks`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8',
-                        'Authorization': `Bearer ${token}`
-                    },
                     params: {
                         limit: 20,
                         time_range: `${timeRange}`
@@ -85,16 +66,11 @@ export const profileApi = createApi({
                 });
             },
         }),
-        getRecentlyPlayingTracks: builder.query<IRecentlyPlayed, { token: string }>({
-            query: (args) => {
-                const { token } = args;
+        getRecentlyPlayingTracks: builder.query<IRecentlyPlayed, void>({
+            query: () => {
                 return ({
                     url: 'player/recently-played',
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8',
-                        'Authorization': `Bearer ${token}`
-                    },
                     params: {
                         limit: 20,
                     }

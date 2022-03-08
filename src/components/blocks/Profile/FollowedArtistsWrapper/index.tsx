@@ -1,21 +1,19 @@
 import { Tabs, Title } from 'components';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { profileApi } from 'redux-app/profile';
 import { FollowedArtist } from '../FollowedArtist';
 import { followedWrappertabs, timeValues } from '../constants';
 import { getStyles } from './styles';
-import { AppContext } from 'context/context';
 import { TITLE_VARIANT } from 'components/constants';
 
 export const FollowedArtistsWrapper = () => {
 
     const classes = getStyles();
-    const { accessToken } = useContext(AppContext);
     const [timeRange, setTimeRange] = useState(timeValues[0]);
     const requestTimeRange = followedWrappertabs[timeRange]
 
     const { data: followedArtists } = profileApi.useGetProfileFollowedArtistsQuery(
-        { token: accessToken, timeRange: requestTimeRange }
+        { timeRange: requestTimeRange }
     )
 
     return (

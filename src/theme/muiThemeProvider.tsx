@@ -2,7 +2,7 @@
 import { textSizeVariant } from 'theme/constant';
 import { darkTheme } from './darkTheme';
 import { lightTheme } from './lightTheme';
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { createTheme, ThemeProvider, Theme } from '@mui/material/styles';
 import { CURRENT_THEME } from 'context/context';
 
@@ -63,7 +63,7 @@ export const MuiThemeProvider = ({
 
   const currentTheme = themeMapping[themeType];
 
-  const theme = createTheme({
+  const theme = useMemo(() => createTheme({
     ...currentTheme,
     components: {
       MuiTypography: {
@@ -80,7 +80,7 @@ export const MuiThemeProvider = ({
         }
       }
     }
-  });
+  }), [themeType]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,6 +1,5 @@
 export const lightTheme = {
   palette: {
-    // type: 'light' as const,
     text: {
       primary: '#222222',
       secondary: '#7B819B',

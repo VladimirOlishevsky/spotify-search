@@ -18,7 +18,7 @@ export const artistsApi = createApi({
         baseUrl: `https://api.spotify.com/v1/`,
     }),
     endpoints: (builder) => ({
-        getArtists: builder.query<any, { token: string, value: string }>({
+        getArtists: builder.query<IArtistsApi, { token: string, value: string }>({
             query: (args) => {
                 const { token, value } = args;
                 return ({

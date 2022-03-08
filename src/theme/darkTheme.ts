@@ -1,6 +1,5 @@
 export const darkTheme = {
   palette: {
-    type: 'dark' as const,
     text: {
       primary: '#fff',
       secondary: '#B2CAD4',
