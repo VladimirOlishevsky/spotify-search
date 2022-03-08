@@ -7,9 +7,9 @@ export const Login = () => {
 
     const classes = getStyles();
 
-    const CLIENT_ID = "515ff8815b3a47b3b2133151fe0caa5c"; // insert your client id here from spotify
-    const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-    const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000/";
+    const CLIENT_ID = process.env.REACT_APP_CLIENT_ID; // insert your client id here from spotify
+    const SPOTIFY_AUTHORIZE_ENDPOINT = process.env.REACT_APP_SPOTIFY_AUTHORIZE_ENDPOINT;
+    const REDIRECT_URL_AFTER_LOGIN = process.env.REACT_APP_REDIRECT_URL_AFTER_LOGIN;
     const SPACE_DELIMITER = "%20";
     const SCOPES = [
         "user-read-currently-playing",
