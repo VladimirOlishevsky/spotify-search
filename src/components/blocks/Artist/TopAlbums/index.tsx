@@ -10,9 +10,9 @@ import { TITLE_VARIANT } from 'components/constants';
 export const TopAlbums = () => {
 
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken, theme } = useContext(AppContext);
+    const { theme } = useContext(AppContext);
     const classes = getStyles({ theme });
-    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ token: accessToken, artistId: currentArtistId })
+    const { data: album } = artistsApi.useGetArtistAlbumsQuery({ artistId: currentArtistId })
     const adaptAlbums = album?.items
         .filter(el => el.type === 'album')
         .reduce<TopAlbumsItems>(

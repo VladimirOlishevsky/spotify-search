@@ -3,6 +3,7 @@ import { IArtist, IArtistsApi, ISingleArtistApi, ITopTracksApi, RootType } from 
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IArtistFeaturesApi, IRelatedArtistsApi, ITopAlbumsApi } from "./types";
+import { LOCALSTORAGE_KEYS } from "components/constants";
 
 const initialState = {
     artists: [] as IArtist[],
@@ -16,84 +17,68 @@ export const artistsApi = createApi({
     reducerPath: ARTISTS_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
         baseUrl: `https://api.spotify.com/v1/`,
+        prepareHeaders: (headers) => {
+            const accessToken = localStorage.getItem(LOCALSTORAGE_KEYS.token);
+            if (accessToken) {
+                headers.set('Authorization', `Bearer ${accessToken}`)
+                headers.set('Content-Type', 'application/x-www-form-urlencoded')
+            }
+            return headers
+        },
     }),
     endpoints: (builder) => ({
-        getArtists: builder.query<IArtistsApi, { token: string, value: string }>({
+        getArtists: builder.query<IArtistsApi, { value: string }>({
             query: (args) => {
-                const { token, value } = args;
+                const { value } = args;
                 return ({
                     url: 'search',
                     params: { q: value, type: 'artist', limit: 5 },
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
-        getSingleArtist: builder.query<ISingleArtistApi, { token: string, artistId: string }>({
+        getSingleArtist: builder.query<ISingleArtistApi, { artistId: string }>({
             query: (args) => {
-                const { token, artistId } = args;
+                const { artistId } = args;
                 return ({
                     url: `artists/${artistId}`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
-        getArtistAlbums: builder.query<ITopAlbumsApi, { token: string, artistId: string }>({
+        getArtistAlbums: builder.query<ITopAlbumsApi, { artistId: string }>({
             query: (args) => {
-                const { token, artistId } = args;
+                const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/albums`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
-        getArtistTopTracks: builder.query<ITopTracksApi, { token: string, artistId: string }>({
+        getArtistTopTracks: builder.query<ITopTracksApi, { artistId: string }>({
             query: (args) => {
-                const { token, artistId } = args;
+                const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/top-tracks?country=US`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
-        getRelatedArtists: builder.query<IRelatedArtistsApi, { token: string, artistId: string }>({
+        getRelatedArtists: builder.query<IRelatedArtistsApi, { artistId: string }>({
             query: (args) => {
-                const { token, artistId } = args;
+                const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/related-artists`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                 });
             },
         }),
-        getAudioFeatures: builder.query<IArtistFeaturesApi, { token: string, artistIds: string }>({
+        getAudioFeatures: builder.query<IArtistFeaturesApi, { artistIds: string }>({
             query: (args) => {
-                const { token, artistIds } = args;
+                const { artistIds } = args;
                 return ({
                     url: `audio-features`,
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `Bearer ${token}`
-                    },
                     params: {
                         ids: artistIds
                     },

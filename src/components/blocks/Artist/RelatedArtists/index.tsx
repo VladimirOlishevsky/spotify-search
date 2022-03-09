@@ -10,9 +10,9 @@ import { TITLE_VARIANT } from 'components/constants';
 export const RelatedArtists = () => {
 
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken, theme } = useContext(AppContext);
+    const { theme } = useContext(AppContext);
     const classes = getStyles({ theme });
-    const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ token: accessToken, artistId: currentArtistId })
+    const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ artistId: currentArtistId })
     const adaptRelatedArtists = relatedArtists?.artists.slice(0, 5);
 
     if (!relatedArtists?.artists.length) return null

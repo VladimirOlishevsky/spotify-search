@@ -5,18 +5,15 @@ import { TopAlbums } from './TopAlbums';
 import { TopSongs } from './TopSongs';
 import { PieChart } from '..';
 import { Avatar } from 'components';
-import { AppContext } from 'context/context';
-import { useContext } from 'react';
 
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
 export const Artist = () => {
     
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken } = useContext(AppContext);
     const classes = getStyles();
 
-    const { data: artist } = artistsApi.useGetSingleArtistQuery({ token: accessToken, artistId: currentArtistId });
+    const { data: artist } = artistsApi.useGetSingleArtistQuery({ artistId: currentArtistId });
 
     const avatarUrl = artist?.images[0]?.url || '';
     const name = artist?.name;

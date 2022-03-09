@@ -1,6 +1,5 @@
 import { SearchResults } from 'components';
-import { AppContext } from 'context/context';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { artistsApi, getArtists, useAppDispatch } from 'redux-app';
 import { useDebounce } from 'utils';
 import { getStyles } from './styles';
@@ -11,10 +10,9 @@ export const Search = () => {
     const classes = getStyles();
 
     const dispatch = useAppDispatch();
-    const { accessToken } = useContext(AppContext)
     const [searchState, setSearchState] = useState('');
     const intermediateValue = useDebounce(searchState, 500);
-    const { data, isFetching } = artistsApi.useGetArtistsQuery({ token: accessToken, value: intermediateValue })
+    const { data, isFetching } = artistsApi.useGetArtistsQuery({ value: intermediateValue })
 
     useEffect(() => {
         if (data) {

@@ -12,9 +12,9 @@ export const TopSongs = () => {
 
     const dispatch = useAppDispatch();
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { accessToken, theme } = useContext(AppContext);
+    const { theme } = useContext(AppContext);
     const classes = getStyles({ theme });
-    const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ token: accessToken, artistId: currentArtistId })
+    const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ artistId: currentArtistId })
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 
     const trackIds = adaptTracks?.map(el => el.id).join(',');
