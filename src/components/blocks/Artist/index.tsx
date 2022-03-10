@@ -9,7 +9,7 @@ import { Avatar } from 'components';
 //spotify:track:7rvEwAILTqxBpdIyUifkE8 - go to spotify 
 
 export const Artist = () => {
-    
+
     const { currentArtistId } = useAppSelector(artistsSelector);
     const classes = getStyles();
 
@@ -31,15 +31,11 @@ export const Artist = () => {
                             <span className={classes.followers}>
                                 Followers {artist?.followers.total}
                             </span>
-                            <Avatar imgUrl={avatarUrl}/>
+                            <Avatar imgUrl={avatarUrl} />
                         </div>
                         <div className={classes.pieChartWrapper}>
-                            <span className={classes.pieChartTitle}>
-                                Analysis last 5 songs
-                            </span>
                             <PieChart />
                         </div>
-
                     </div>
                     <RelatedArtists />
                     <TopSongs />

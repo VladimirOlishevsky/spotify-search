@@ -1,6 +1,8 @@
 import { artistsApi, artistsSelector, useAppSelector } from 'redux-app';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2';
+import { Typography } from '@mui/material';
+import { getStyles } from './styles';
 Chart.register(ArcElement, Tooltip, Legend);
 //#345469
 
@@ -8,8 +10,11 @@ interface Type extends Record<string, number> { }
 
 export const PieChart = () => {
 
+    const classes = getStyles()
     const { topTrackIds } = useAppSelector(artistsSelector);
     const { data: audioFeatures } = artistsApi.useGetAudioFeaturesQuery({ artistIds: topTrackIds })
+
+    if (!topTrackIds) return null
 
     if (audioFeatures?.audio_features[0] === null) return null
     const adaptAudioFeatures = audioFeatures?.audio_features.reduce((acc: Type, el: Type) => {
@@ -54,6 +59,11 @@ export const PieChart = () => {
     };
 
     return (
-        <Pie data={data} />
+        <div className={classes.root}>
+            <Typography variant='h2' className={classes.pieChartTitle}>
+                Analysis last 5 songs
+            </Typography>
+            <Pie data={data} />
+        </div>
     );
 }

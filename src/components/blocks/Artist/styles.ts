@@ -18,7 +18,10 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
     info: {
         display: 'flex',
         gap: theme.spacing(10),
-        justifyContent: 'center'
+        justifyContent: 'center',
+        [theme.breakpoints.down('sm')]: {
+            flexWrap: 'wrap'
+        }
     },
     artistInfo: {
         display: 'flex', 
@@ -33,14 +36,8 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         color: theme.search?.text.titles,
     },
     pieChartWrapper: {
-        display: 'flex', 
+        display: 'flex',
         width: 300, 
-        alignItems: 'center', 
-        flexDirection: 'column', 
-        justifyContent: 'space-around'
     },
-    pieChartTitle: {
-        color: theme.search?.text.titles,
-    }
 }))
 
