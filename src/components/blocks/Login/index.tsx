@@ -36,7 +36,14 @@ export const Login = () => {
             <h1>hi</h1>
             <a
                 className={classes.login}
-                href={`${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`}>
+                href={`
+                ${SPOTIFY_AUTHORIZE_ENDPOINT}
+                ?client_id=${CLIENT_ID}
+                &redirect_uri=${REDIRECT_URL_AFTER_LOGIN}
+                &scope=${SCOPES_URL_PARAM}
+                &response_type=token
+                &show_dialog=true
+                `}>
                 login to spotify
             </a>
         </div>

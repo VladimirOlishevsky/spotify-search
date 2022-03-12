@@ -5,31 +5,39 @@ import { makeStyles } from '@mui/styles';
 export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
         borderRadius: 8,
         opacity: 1,
         boxShadow: '-6px -6px 10px rgba(0, 0, 0, 0.2),6px 6px 10px rgba(0, 0, 0, 0.2)',
-        padding: 30
+        padding: theme.spacing(4),
+        gap: theme.spacing(4)
     },
     info: {
         display: 'flex',
-        gap: 32,
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: theme.spacing(4),
     },
     description: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+            alignItems: 'center'
+        }
     },
     songName: {
-        fontSize: 18,
         color: theme.search?.text.text,
-        fontWeight: 500
     },
     author: {
         display: 'flex',
         flexDirection: 'row',
-        fontSize: 14
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: theme.spacing(0.5),
     },
     authorName: {
         color: theme.search?.text.description,
@@ -65,6 +73,9 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         touchAction: 'manipulation',
         verticalAlign: 'baseline',
         width: 'auto',
+        [theme.breakpoints.down('sm')]: {
+            width: '100%'
+        },
         '&:hover': {
             backgroundColor: '#fb8332',
             boxShadow: 'rgba(0, 0, 0, 0.1) 0 4px 12px',
@@ -79,5 +90,5 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
             boxShadow: 'rgba(0, 0, 0, .06) 0 2px 4px',
             transform: 'translateY(0)'
         }
-      }
+    }
 }))

@@ -12,7 +12,10 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         display: 'flex',
         flexDirection: 'row',
         gap: theme.spacing(),
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center'
+        }
     },
 }))
 

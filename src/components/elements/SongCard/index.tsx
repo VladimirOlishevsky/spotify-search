@@ -27,13 +27,13 @@ export const SongCard = ({
                         {songName}
                     </Typography>
                     <div className={classes.author}>
-                        {songArtist.map(el => (
+                        {songArtist.map((el, index) => (
                             <Typography
                                 key={el}
                                 variant='h5'
                                 className={classes.authorName}
                             >
-                                {el}
+                                {`${el}${index === songArtist.length - 1 ? '' : ','}`}
                             </Typography>
                         ))}
                     </div>
