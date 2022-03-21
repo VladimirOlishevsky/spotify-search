@@ -35,9 +35,11 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
     author: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
         flexWrap: 'wrap',
         gap: theme.spacing(0.5),
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center',
+        }
     },
     authorName: {
         color: theme.search?.text.description,
