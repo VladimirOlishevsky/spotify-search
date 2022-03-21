@@ -16,7 +16,7 @@ export const getStyles = makeStyles({
         borderLeft: '2px solid rgba(97, 150, 204, 0.56)',
         '&:hover > div': {
             display: 'initial',
-            animation: '$flickerOpacify .6s ease-in-out',
+            animation: 'flickerOpacify .6s ease-in-out',
             animationIterationCount: 'infinite'
         }
     },
@@ -26,7 +26,7 @@ export const getStyles = makeStyles({
         animationIterationCount: 'infinite',
     },
     lights: {
-        animation: (props: IProps) => props.theme === CURRENT_THEME.dark ? undefined : '$flickerOpacify .6s ease-in-out',
+        animation: (props: IProps) => props.theme === CURRENT_THEME.dark ? undefined : 'flickerOpacify .6s ease-in-out',
         animationIterationCount: 'infinite',
         display: (props: IProps) => props.theme === CURRENT_THEME.dark ? 'initial' : 'none',
         position: 'absolute',

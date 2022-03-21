@@ -80,7 +80,7 @@ export const MuiThemeProvider = ({
         }
       }
     }
-  }), [themeType]);
+  }), [currentTheme]);
 
   return (
     <ThemeProvider theme={theme}>
