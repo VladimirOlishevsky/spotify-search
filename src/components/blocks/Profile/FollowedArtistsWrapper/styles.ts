@@ -7,13 +7,21 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         display: 'flex',
         flexDirection: 'column',
         width: '70%',
-        gap: theme.spacing(4)
+        gap: theme.spacing(4),
+        [theme.breakpoints.down('sm')]: {
+            width: '100%'
+        }
     },
     artistsWrapper: {
         display: 'grid',
         gridAutoFlow: 'column',
         gridTemplateColumns: 'repeat(2, 1fr)',
-        gridTemplateRows: 'repeat(10, auto)'
+        gridTemplateRows: 'repeat(10, auto)',
+        [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24
+        }
     },
     tabStyles: {
         color: theme.profile.tabStyles.color

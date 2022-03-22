@@ -19,6 +19,9 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: 'rgba(0,0,0,0.1)'
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: 0
         }
     },
     img: {
