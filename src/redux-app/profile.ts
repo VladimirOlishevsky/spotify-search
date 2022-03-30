@@ -17,11 +17,12 @@ export const profileApi = createApi({
     reducerPath: PROFILE_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
         baseUrl: `https://api.spotify.com/v1/me`,
+        method: 'GET',
         prepareHeaders: (headers) => {
             const accessToken = localStorage.getItem(LOCALSTORAGE_KEYS.token);
             if (accessToken) {
                 headers.set('Authorization', `Bearer ${accessToken}`)
-                headers.set( 'Content-Type', 'application/json; charset=utf-8')
+                headers.set('Content-Type', 'application/json; charset=utf-8')
             }
             return headers
         },
@@ -29,21 +30,15 @@ export const profileApi = createApi({
 
     endpoints: (builder) => ({
         getProfile: builder.query<IProfile, void>({
-            query: () => {
-                return ({
-                    url: '',
-                    method: 'GET',
-                });
-            },
+            query: () => ({ url: '' }),
         }),
-        getProfileFollowedArtists: builder.query<IFollowedArtists, { 
+        getProfileFollowedArtists: builder.query<IFollowedArtists, {
             timeRange: TIME_RANGE
         }>({
             query: (args) => {
                 const { timeRange } = args;
                 return ({
                     url: `top/artists`,
-                    method: 'GET',
                     params: {
                         limit: 20,
                         time_range: `${timeRange}`
@@ -51,14 +46,13 @@ export const profileApi = createApi({
                 });
             },
         }),
-        getProfileListenedTracks: builder.query<ITopListenedTracks, { 
+        getProfileListenedTracks: builder.query<ITopListenedTracks, {
             timeRange: TIME_RANGE
         }>({
             query: (args) => {
                 const { timeRange } = args;
                 return ({
                     url: `top/tracks`,
-                    method: 'GET',
                     params: {
                         limit: 20,
                         time_range: `${timeRange}`
@@ -70,7 +64,6 @@ export const profileApi = createApi({
             query: () => {
                 return ({
                     url: 'player/recently-played',
-                    method: 'GET',
                     params: {
                         limit: 20,
                     }

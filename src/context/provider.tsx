@@ -8,7 +8,8 @@ export const ContextProvider: FC = ({ children }) => {
   const [accessToken, setAccessToken] = useState('');
 
   const timestamp = localStorage.getItem(LOCALSTORAGE_KEYS.timestamp)
-  const isTokenExpired = (Date.now() - Number(timestamp)) / 1000 > 3600 ? true : false
+  const isHourExpired = (Date.now() - Number(timestamp)) / 1000 > 3600
+  const isTokenExpired = isHourExpired ? true : false
 
   useEffect(() => {
     if (!localStorage.getItem(LOCALSTORAGE_KEYS.token)) return

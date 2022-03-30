@@ -2,16 +2,13 @@ import { artistsApi, artistsSelector, useAppSelector } from 'redux-app';
 import { getStyles } from './styles';
 import { RelatedArtistCard, Title } from 'components';
 import noImage from 'assets/no_image.jpg';
-import { useContext } from 'react';
-import { AppContext } from 'context/context';
 import { TITLE_VARIANT } from 'components/constants';
 
 
 export const RelatedArtists = () => {
 
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { theme } = useContext(AppContext);
-    const classes = getStyles({ theme });
+    const classes = getStyles();
     const { data: relatedArtists } = artistsApi.useGetRelatedArtistsQuery({ artistId: currentArtistId })
     const adaptRelatedArtists = relatedArtists?.artists.slice(0, 5);
 

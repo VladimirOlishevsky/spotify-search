@@ -10,7 +10,7 @@ interface IInitialState {
 const initialState: IInitialState = {
     authToken: '',
 }
-
+// TODO - non-use file - delete
 export const AUTH_API_REDUCER_KEY = 'authApi';
 
 export const authApi = createApi({

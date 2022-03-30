@@ -17,6 +17,7 @@ export const artistsApi = createApi({
     reducerPath: ARTISTS_API_REDUCER_KEY,
     baseQuery: fetchBaseQuery({
         baseUrl: `https://api.spotify.com/v1/`,
+        method: 'GET',
         prepareHeaders: (headers) => {
             const accessToken = localStorage.getItem(LOCALSTORAGE_KEYS.token);
             if (accessToken) {
@@ -33,7 +34,6 @@ export const artistsApi = createApi({
                 return ({
                     url: 'search',
                     params: { q: value, type: 'artist', limit: 5 },
-                    method: 'GET',
                 });
             },
         }),
@@ -42,7 +42,6 @@ export const artistsApi = createApi({
                 const { artistId } = args;
                 return ({
                     url: `artists/${artistId}`,
-                    method: 'GET',
                 });
             },
         }),
@@ -51,7 +50,6 @@ export const artistsApi = createApi({
                 const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/albums`,
-                    method: 'GET',
                 });
             },
         }),
@@ -60,7 +58,6 @@ export const artistsApi = createApi({
                 const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/top-tracks?country=US`,
-                    method: 'GET',
                 });
             },
         }),
@@ -69,7 +66,6 @@ export const artistsApi = createApi({
                 const { artistId } = args;
                 return ({
                     url: `artists/${artistId}/related-artists`,
-                    method: 'GET',
                 });
             },
         }),
@@ -78,7 +74,6 @@ export const artistsApi = createApi({
                 const { artistIds } = args;
                 return ({
                     url: `audio-features`,
-                    method: 'GET',
                     params: {
                         ids: artistIds
                     },
