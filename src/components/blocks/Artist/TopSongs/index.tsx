@@ -3,8 +3,7 @@ import { artistsApi, artistsSelector, useAppSelector, setTrackIds } from 'redux-
 import { useAppDispatch } from 'redux-app/store';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
-import { useContext, useEffect } from 'react';
-import { AppContext } from 'context/context';
+import { useEffect } from 'react';
 import { TITLE_VARIANT } from 'components/constants';
 
 
@@ -12,8 +11,7 @@ export const TopSongs = () => {
 
     const dispatch = useAppDispatch();
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { theme } = useContext(AppContext);
-    const classes = getStyles({ theme });
+    const classes = getStyles();
     const { data: topTracks } = artistsApi.useGetArtistTopTracksQuery({ artistId: currentArtistId })
     const adaptTracks = topTracks?.tracks.slice(0, 5);
 

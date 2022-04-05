@@ -1,8 +1,6 @@
 import { artistsApi, artistsSelector, useAppSelector, TopAlbumsItems } from 'redux-app';
 import { getStyles } from './styles';
 import noImage from 'assets/no_image.jpg';
-import { useContext } from 'react';
-import { AppContext } from 'context/context';
 import { Title, AlbumCard } from 'components';
 import { TITLE_VARIANT } from 'components/constants';
 
@@ -10,8 +8,7 @@ import { TITLE_VARIANT } from 'components/constants';
 export const TopAlbums = () => {
 
     const { currentArtistId } = useAppSelector(artistsSelector);
-    const { theme } = useContext(AppContext);
-    const classes = getStyles({ theme });
+    const classes = getStyles();
     const { data: album } = artistsApi.useGetArtistAlbumsQuery({ artistId: currentArtistId })
     const adaptAlbums = album?.items
         .filter(el => el.type === 'album')
