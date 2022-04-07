@@ -14,6 +14,13 @@ export const darkTheme = {
       default: '#4D4D4D',
     },
   },
+  search: {
+    text: {
+      titles: '',
+      text: '#2ec4b6',
+      description: '',
+    }
+  },
   headerTabs: {
     active: {
       color: '#e74344',
