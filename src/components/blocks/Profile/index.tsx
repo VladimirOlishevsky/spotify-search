@@ -17,12 +17,10 @@ export const Profile = () => {
 
     return (
         <div className={classes.root}>
-            <div className={classes.asideTabs}>
-                <AsideTabs activeAsideTab={activeAsideTab} setActiveAsideTab={setActiveAsideTab} />
-            </div>
             <div className={classes.header}>
                 <Typography className={classes.title} variant='h1'>Welcome {profile?.display_name}</Typography>
                 <Avatar imgUrl={profileUrl} />
+                <AsideTabs activeAsideTab={activeAsideTab} setActiveAsideTab={setActiveAsideTab} />
             </div>
             {actualComponent}
         </div>

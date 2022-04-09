@@ -1,19 +1,19 @@
 
+import { DefaultTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         display: 'flex', 
-        flexDirection: 'column', 
-        gap: 8, 
+        gap: theme.spacing(), 
         // backgroundColor: '#F9DB6D', 
         backgroundColor: '#FED9B7', 
-        borderRadius: 32, 
-        padding: 10
+        borderRadius: theme.spacing(4), 
+        padding: theme.spacing(1.25)
     },
     img: {
-        padding: 10,
+        padding: theme.spacing(1.25),
         border: '1px solid transparent',
         '&:hover': {
             cursor: 'pointer'
@@ -22,5 +22,5 @@ export const getStyles = makeStyles({
     active: {
         borderBottom: '1px solid red'
     }
-})
+}))
 

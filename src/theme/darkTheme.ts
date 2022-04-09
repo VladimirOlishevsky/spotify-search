@@ -18,7 +18,7 @@ export const darkTheme = {
     text: {
       titles: '',
       text: '#2ec4b6',
-      description: '',
+      description: '#E88D67',
     }
   },
   headerTabs: {

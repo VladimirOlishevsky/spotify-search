@@ -1,8 +1,6 @@
 import { getStyles } from './styles';
 import { Typography } from '@mui/material';
 import dayjs from 'dayjs'
-import { useContext } from 'react';
-import { AppContext } from 'context/context';
 
 interface IAlbumCard {
     img: string,
@@ -17,8 +15,7 @@ export const AlbumCard = ({
     albumDate,
     urlToSpotify
 }: IAlbumCard) => {
-    const { theme } = useContext(AppContext)
-    const classes = getStyles({ theme });
+    const classes = getStyles();
     const date = dayjs(albumDate).year();
     
     return (

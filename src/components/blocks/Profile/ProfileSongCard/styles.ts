@@ -19,6 +19,9 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: 'rgba(0,0,0,0.1)'
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: 0,
         }
     },
     img: {
@@ -34,7 +37,10 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         display: 'flex', 
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: theme.spacing(2)
+        gap: theme.spacing(2),
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'flex-start'
+        }
     },
     info: {
         display: 'flex', 

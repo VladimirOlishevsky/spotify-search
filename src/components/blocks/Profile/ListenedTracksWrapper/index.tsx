@@ -27,7 +27,7 @@ export const ListenedTracksWrapper = () => {
                 externalTabStyles={classes.tabStyles}
                 externalActiveStyles={classes.activetabs}
             />
-            <div>
+            <div className={classes.songsWrapper}>
                 {listenedTracks?.items.map((el, index) => (
                     <ProfileSongCard
                         key={index}

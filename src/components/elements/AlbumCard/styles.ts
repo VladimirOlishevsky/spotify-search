@@ -1,8 +1,8 @@
 
 import { makeStyles } from '@mui/styles';
-import { CURRENT_THEME, IThemeProps } from 'context/context';
+import { DefaultTheme } from '@mui/material';
 
-export const getStyles = makeStyles({
+export const getStyles = makeStyles((theme: DefaultTheme) => ({
     root: {
         width: 160,
         height: 230,
@@ -25,10 +25,10 @@ export const getStyles = makeStyles({
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         width: 'inherit',
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#388697' : 'inherit',
+        color: theme.search?.text.text
     },
     albumDate: {
-        color: (props: IThemeProps) => props.theme === CURRENT_THEME.light ? '#EBBAB9' : 'inherit',
+        color: theme.search?.text.description,
     },
     info: {
         width: '100%',
@@ -40,4 +40,4 @@ export const getStyles = makeStyles({
         width: 150,
         height: 150,
     },
-})
+}))

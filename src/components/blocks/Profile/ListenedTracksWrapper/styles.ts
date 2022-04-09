@@ -8,7 +8,10 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         flexDirection: 'column',
         maxWidth: '70%',
         width: '100%',
-        gap: theme.spacing(4)
+        gap: theme.spacing(4),
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '100%'
+        }
     },
     tabStyles: {
         color: theme.profile.tabStyles.color
@@ -17,6 +20,11 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         color: theme.profile.tabStyles.active.color,
         borderTop: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
         borderBottom: `1px solid ${theme.profile.tabStyles.active.borderColor}`,
+    },
+    songsWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: theme.spacing(2)
     }
 }))
 

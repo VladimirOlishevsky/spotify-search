@@ -31,6 +31,6 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         height: 50,
     },
     name: {
-        color: theme.search?.text.text,
+        color: theme.search?.text.description,
     }
 }))
