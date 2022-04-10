@@ -22,6 +22,7 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         },
         [theme.breakpoints.down('sm')]: {
             padding: 0,
+            gap: theme.spacing()
         }
     },
     img: {

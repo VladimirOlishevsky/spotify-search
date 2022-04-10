@@ -14,7 +14,7 @@ export const RecentlyPlayedWrapper = () => {
     return (
         <div className={classes.root}>
             <Title type={TITLE_VARIANT.profile} variant='h1' title='Last Recently Played Song' />
-            <div>
+            <div className={classes.content}>
                 {data?.map((el, index) => (
                     <ProfileSongCard
                         key={index}

@@ -8,7 +8,17 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         flexDirection: 'column',
         maxWidth: '70%',
         width: '100%',
-        gap: theme.spacing(4)
+        gap: theme.spacing(4),
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '100%',
+        }
     },
+    content: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: theme.spacing(3),
+        }
+    }
 }))
 
