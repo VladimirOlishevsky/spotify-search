@@ -12,7 +12,10 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         position: 'relative',
     },
     title: {
-        color: theme.profile.title
+        color: theme.profile.title,
+        [theme.breakpoints.down('sm')]: {
+            textAlign: 'center'
+        }
     },
     header: {
         display: 'flex',

@@ -9,7 +9,7 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
         gap: theme.spacing(), 
         // backgroundColor: '#F9DB6D', 
         backgroundColor: '#FED9B7', 
-        borderRadius: theme.spacing(4), 
+        borderRadius: theme.spacing(1), 
         padding: theme.spacing(1.25)
     },
     img: {
@@ -19,8 +19,14 @@ export const getStyles = makeStyles((theme: DefaultTheme) => ({
             cursor: 'pointer'
         }
     },
+    wrapper: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
     active: {
-        borderBottom: '1px solid red'
+        width: '100%',
+        height: 3,
+        backgroundColor: 'red'
     }
 }))
 

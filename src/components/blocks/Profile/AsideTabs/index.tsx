@@ -4,7 +4,7 @@ import { asideTabsConfig } from '../constants';
 
 interface IAsideTabs {
     activeAsideTab: string,
-    setActiveAsideTab:  React.Dispatch<React.SetStateAction<string>>,
+    setActiveAsideTab: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export const AsideTabs = ({
@@ -15,15 +15,16 @@ export const AsideTabs = ({
     return (
         <div className={classes.root}>
             {asideTabsConfig.map(el => (
-                <img
-                    key={el.name}
-                    className={clsx(
-                        classes.img,
-                        el.name === activeAsideTab ? classes.active : undefined)}
-                    onClick={() => setActiveAsideTab(el.name)}
-                    width={60}
-                    src={el.img}
-                    alt={el.name} />
+                <div className={classes.wrapper}>
+                    <img
+                        key={el.name}
+                        className={classes.img}
+                        onClick={() => setActiveAsideTab(el.name)}
+                        width={60}
+                        src={el.img}
+                        alt={el.name} />
+                    {el.name === activeAsideTab && <div className={classes.active} />}
+                </div>
             ))}
         </div>
     );
