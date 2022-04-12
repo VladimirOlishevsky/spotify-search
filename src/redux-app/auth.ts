@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootType } from ".";
+// import { RootType } from ".";
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -50,5 +50,5 @@ export const authSlice = createSlice({
 });
 
 export const { updateAccessToken } = authSlice.actions;
-export const authSelector = (state: RootType) => state.auth;
+// export const authSelector = (state: RootType) => state.auth;
 export default authSlice.reducer;

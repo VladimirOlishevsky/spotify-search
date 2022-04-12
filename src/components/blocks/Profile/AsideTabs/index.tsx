@@ -1,5 +1,4 @@
 import { getStyles } from './styles';
-import clsx from 'clsx';
 import { asideTabsConfig } from '../constants';
 
 interface IAsideTabs {
@@ -15,7 +14,7 @@ export const AsideTabs = ({
     return (
         <div className={classes.root}>
             {asideTabsConfig.map(el => (
-                <div className={classes.wrapper}>
+                <div key={el.name} className={classes.wrapper}>
                     <img
                         key={el.name}
                         className={classes.img}
