@@ -1,6 +1,5 @@
 import { getStyles } from './styles';
 import { Typography } from '@mui/material';
-import dayjs from 'dayjs'
 
 interface IAlbumCard {
     img: string,
@@ -16,7 +15,7 @@ export const AlbumCard = ({
     urlToSpotify
 }: IAlbumCard) => {
     const classes = getStyles();
-    const date = dayjs(albumDate).year();
+    const date = new Date(albumDate).getFullYear();
     
     return (
         <a target="_blank" rel="noreferrer" className={classes.root} href={urlToSpotify}>
