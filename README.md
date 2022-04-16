@@ -1,1 +1,1 @@
-in this page will be app description
+Spotify connection app with search and different information about your account
