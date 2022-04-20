@@ -12,5 +12,4 @@ export enum TITLE_VARIANT {
     search = 'search',
     profile = 'profile',
     profileCard = 'profileCard'
-    // shortTerm = 'short_term'
 }
