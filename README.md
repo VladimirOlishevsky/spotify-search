@@ -1,10 +1,10 @@
 <h1 align="center">Spotify Search App</h1>
 
-<!-- <h1 align="center">
+<h1 align="center">
 
-[![Build Status](https://app.travis-ci.com/VladimirOlishevsky/CosySportBot.svg?branch=master)](https://app.travis-ci.com/VladimirOlishevsky/CosySportBot)
+[![Build Status](https://app.travis-ci.com/VladimirOlishevsky/spotify-search.svg?token=zTeJVmdKq6jspQqUvyqf&branch=master)](https://app.travis-ci.com/VladimirOlishevsky/spotify-search)
 
-</h1> -->
+</h1>
 
 
 <!-- <h1 align="center"><a href="https://t.me/CosySportBot">Live Demo</a></h1> -->
