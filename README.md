@@ -1,5 +1,3 @@
-Spotify connection app with search and different information about your account
-
 <h1 align="center">Spotify Search App</h1>
 
 <!-- <h1 align="center">
@@ -15,4 +13,5 @@ Spotify connection app with search and different information about your account
 
 Spotify connection app with search and different information about your account. You need to sign in your spotify account
 
-- First part represents like a search app using [Spotify Api](https://developer.spotify.com/), when you must searching all of songs which spotify have
+- First part represents a search app using [Spotify Api](https://developer.spotify.com/), when you must searching all of artists which spotify have
+- Second part represents information about your personal activity in spotify
