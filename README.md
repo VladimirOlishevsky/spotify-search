@@ -6,9 +6,6 @@
 
 </h1>
 
-
-<!-- <h1 align="center"><a href="https://t.me/CosySportBot">Live Demo</a></h1> -->
-
 ## Description
 
 Spotify connection app with search and different information about your account. You need to sign in your spotify account
