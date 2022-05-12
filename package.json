@@ -1,5 +1,6 @@
 {
   "name": "spotify-search-app",
+  "homepage": "https://vladimirolishevsky.github.io/spotify-search/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
