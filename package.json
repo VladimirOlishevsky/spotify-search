@@ -1,21 +1,20 @@
 {
   "name": "spotify-search-app",
-  "homepage": "https://vladimirolishevsky.github.io/spotify-search/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@reduxjs/toolkit": "^1.7.1",
-    "@types/node": "^12.20.37",
-    "@types/react": "^17.0.34",
-    "clsx": "^1.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.6",
+    "@emotion/react": "11.7.1",
+    "@emotion/styled": "11.6.0",
+    "@reduxjs/toolkit": "1.7.1",
+    "@types/node": "12.20.37",
+    "@types/react": "17.0.34",
+    "clsx": "1.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "7.2.6",
     "react-scripts": "4.0.3",
-    "typescript": "^4.5.2",
-    "web-vitals": "^1.0.1"
+    "typescript": "4.5.2",
+    "web-vitals": "1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,9 +42,9 @@
     ]
   },
   "devDependencies": {
-    "@mui/material": "^5.2.3",
-    "@mui/styles": "^5.2.3",
-    "chart.js": "^3.7.0",
-    "react-chartjs-2": "^4.0.1"
+    "@mui/material": "5.2.3",
+    "@mui/styles": "5.2.3",
+    "chart.js": "3.7.0",
+    "react-chartjs-2": "4.0.1"
   }
 }
