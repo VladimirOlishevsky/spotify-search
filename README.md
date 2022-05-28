@@ -6,6 +6,8 @@
 
 </h1>
 
+<img src="./assets/spotify_preview.gif" width="100%">
+
 ## Description
 
 Spotify connection app with search and different information about your account. You need to sign in your spotify account
